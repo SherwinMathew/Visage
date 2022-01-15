@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         fadeOut.setInterpolator(new AccelerateInterpolator());
         fadeOut.setStartOffset(500);
         fadeOut.setDuration(1800);
-        ImageView image =findViewById(R.id.imageView);
+        ImageView image =findViewById(R.id.app_icon);
 
         image.setAnimation(fadeOut);
 
