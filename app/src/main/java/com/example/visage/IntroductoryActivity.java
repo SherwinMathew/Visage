@@ -21,7 +21,7 @@ public class IntroductoryActivity extends AppCompatActivity {
         logo= findViewById(R.id.logo1);
         appName= findViewById(R.id.app_name);
         splashImg= findViewById(R.id.bg1);
-        logo= findViewById(R.id.lottie);
+        lottieAnimationView= findViewById(R.id.lottie);
 
         splashImg.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
         logo.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
