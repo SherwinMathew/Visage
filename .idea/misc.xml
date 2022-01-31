@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/drawable-v24/grey_cursor_color.xml" value="0.1835" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/drawable/circle_blank.xml" value="0.1" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/drawable/circle_filled.xml" value="0.1" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/drawable/password_icon.xml" value="0.1" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_introductory.xml" value="0.18947368421052632" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/circle_blank.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/fragment_blank.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.264" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/sample.xml" value="0.24817518248175183" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/splash_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/splash_activity.xml" value="0.259963768115942" />
       </map>

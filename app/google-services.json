@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310143109410",
+    "project_id": "visage-10141",
+    "storage_bucket": "visage-10141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310143109410:android:597f57680474ea77403d7b",
+        "android_client_info": {
+          "package_name": "com.example.visage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310143109410-7glc9ato205fu48f4l31im0spijn5jf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQqn-gjBLox_cRqaJV2tPKPlLz9zEx_44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310143109410-7glc9ato205fu48f4l31im0spijn5jf5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

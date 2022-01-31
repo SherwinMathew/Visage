@@ -18,4 +18,7 @@ public class OnBoardingFragment1 extends Fragment {
 
         return root;
     }
+
+
+
 }
