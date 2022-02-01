@@ -10,12 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
-            android:name=".Registration_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Login_Activity"
-            android:exported="false" />
-        <activity
             android:name=".Introductory_Activity"
             android:exported="true">
             <intent-filter>
@@ -26,8 +20,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
-
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
