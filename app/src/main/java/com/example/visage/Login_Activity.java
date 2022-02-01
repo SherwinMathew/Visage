@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+public class Login_Activity extends AppCompatActivity {
 
 
     @Override

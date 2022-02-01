@@ -25,7 +25,7 @@ public class OnBoardingFragment3 extends Fragment {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),Login.class);
+                Intent i = new Intent(getActivity(), Login_Activity.class);
                 startActivity(i);
             }
         });
