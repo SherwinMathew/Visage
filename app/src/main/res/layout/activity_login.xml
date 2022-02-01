@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b19cd8 "
+    android:background="#b19cd8"
     android:padding="30dp"
     tools:context=".Login_Activity">
 
@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="444dp"
-                android:background="@drawable/white_cueve_bg"/>
+                android:background="@drawable/white_curve_bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Email or Username"
                     android:textColor="#c2c2c2"
@@ -194,14 +194,15 @@
                 android:textSize="15sp"/>
 
             <TextView
+                android:id="@+id/sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center_horizontal"
-                android:text="Sign Up"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Sign Up"
                 android:textColor="#ffffff"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
 
         </LinearLayout>
