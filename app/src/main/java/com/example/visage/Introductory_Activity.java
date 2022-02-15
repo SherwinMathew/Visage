@@ -10,7 +10,9 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Adapter;
 import android.widget.ImageView;
 
@@ -35,15 +37,25 @@ public class Introductory_Activity extends AppCompatActivity {
         appName = findViewById(R.id.app_name);
         splashImg = findViewById(R.id.bg1);
         lottieAnimationView = findViewById(R.id.lottie);
-
         viewPager = findViewById(R.id.pager);
         pageAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(pageAdapter);
+
 
         splashImg.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
         logo.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
         appName.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
         lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                viewPager.setAdapter(pageAdapter);
+            }
+        }, 3000);
+
+
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{

@@ -1,5 +1,6 @@
 package com.example.visage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,9 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //Button map;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -55,10 +63,29 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private EditText location_finder;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        //return inflater.inflate(R.layout.fragment_home, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //String menu = getArguments().getString("Menu");
+        Button map = (Button) view.findViewById(R.id.map_test);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),Map_Activity.class);
+                startActivity(i);
+            }
+        });
+
+
+        return view;
+
     }
+
+
 }

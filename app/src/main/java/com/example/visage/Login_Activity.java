@@ -3,7 +3,10 @@ package com.example.visage;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -11,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Login_Activity extends AppCompatActivity {
 
     TextView sign_up;
+    ImageView continue_btn;
 
 
     @Override
@@ -25,6 +30,18 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         sign_up = findViewById(R.id.sign_up);
+        continue_btn = findViewById(R.id.login_continue);
+
+        continue_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Login_Activity.this, BottomNavig.class);
+                startActivity(i);
+
+            }
+        });
+
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

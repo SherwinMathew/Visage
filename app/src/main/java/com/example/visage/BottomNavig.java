@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 public class BottomNavig extends AppCompatActivity {
+
     MeowBottomNavigation bottomNavigation;
 
     @Override
@@ -23,9 +24,9 @@ public class BottomNavig extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_calendar));
         bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
 
-        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
-            public void onShowItem(MeowBottomNavigation.Model item) {
+            public void onClickItem(MeowBottomNavigation.Model item) {
                 Fragment fragment = null;
 
                 switch (item.getId()){
@@ -33,10 +34,10 @@ public class BottomNavig extends AppCompatActivity {
                         fragment = new HomeFragment();
                         break;
                     case 2:
-                        fragment = new SearchFragment();
+                        fragment = new CalendarFragment();
                         break;
                     case 3:
-                        fragment = new CalendarFragment();
+                        fragment = new SearchFragment();
                         break;
                     case 4:
                         fragment = new ProfileFragment();
@@ -46,6 +47,21 @@ public class BottomNavig extends AppCompatActivity {
                 loadFragment(fragment);
             }
         });
+
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                // your codes
+            }
+        });
+
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+                // your codes
+            }
+        });
+
 
         bottomNavigation.setCount(1,"10");
         bottomNavigation.show(1,true);
@@ -58,3 +74,4 @@ public class BottomNavig extends AppCompatActivity {
                 .commit();
     }
 }
+
