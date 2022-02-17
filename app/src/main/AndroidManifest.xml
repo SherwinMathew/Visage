@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
+            android:name=".Profile_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Map_Activity"
             android:exported="false" />
         <activity
@@ -18,7 +21,7 @@
             android:exported="false" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Registration_Activity" />
-        <activity android:name=".BottomNavig"/>
+        <activity android:name=".BottomNavigation" />
         <activity
             android:name=".Introductory_Activity"
             android:exported="true">

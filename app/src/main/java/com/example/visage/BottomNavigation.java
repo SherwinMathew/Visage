@@ -7,21 +7,21 @@ import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
-public class BottomNavig extends AppCompatActivity {
+public class BottomNavigation extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bottom_navig);
+        setContentView(R.layout.activity_bottom_navigation);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
         //Add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_search));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_calendar));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_cart));
         bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
 
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
@@ -37,10 +37,10 @@ public class BottomNavig extends AppCompatActivity {
                         fragment = new CalendarFragment();
                         break;
                     case 3:
-                        fragment = new SearchFragment();
+                        fragment = new CartFragment();
                         break;
                     case 4:
-                        fragment = new ProfileFragment();
+                        fragment = new AccountFragment();
                         break;
                 }
 

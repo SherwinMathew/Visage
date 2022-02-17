@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,7 +60,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private EditText location_finder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,14 +70,10 @@ public class HomeFragment extends Fragment {
 
         //String menu = getArguments().getString("Menu");
         Button map = (Button) view.findViewById(R.id.map_test);
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(),Map_Activity.class);
-                startActivity(i);
-            }
+        map.setOnClickListener(view1 -> {
+            Intent i = new Intent(getContext(),Map_Activity.class);
+            startActivity(i);
         });
-
 
         return view;
 

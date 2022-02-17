@@ -3,14 +3,15 @@
     <style name="Theme.Visage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#b19cd8</item>
-        <item name="colorPrimaryVariant">#b19cd8</item>
-        <item name="colorOnPrimary">#b19cd8</item>
+        <item name="colorPrimaryVariant">#ce9dd9</item>
+        <item name="colorOnPrimary">#000000</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#b19cd8</item>
-        <item name="colorSecondaryVariant">#b19cd8</item>
-        <item name="colorOnSecondary">#b19cd8</item>
+        <item name="colorSecondaryVariant">#e8bffb</item>
+        <item name="colorOnSecondary">#000000</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">#b19cd8</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#000000</item>
         <!-- Customize your theme here. -->
     </style>
+
 </resources>
