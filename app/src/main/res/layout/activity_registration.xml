@@ -36,7 +36,7 @@
                     android:text="Create Your Account"
                     android:textAllCaps="true"
                     android:textColor="#030303"
-                    android:textSize="31.3sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,11 +48,12 @@
                     android:textSize="13.3sp" />
 
                 <EditText
+                    android:id="@+id/reg_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/username_icon"
                     android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/username_icon"
                     android:fontFamily="@font/poppins_semibold"
                     android:inputType="text"
                     android:maxLines="1"
@@ -68,7 +69,7 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="6.3dp"
                     android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5"/>
+                    android:background="#d5d5d5" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,11 +81,12 @@
                     android:textSize="13.3sp" />
 
                 <EditText
+                    android:id="@+id/reg_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:drawableStart="@drawable/email_icon"
                     android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/email_icon"
                     android:fontFamily="@font/poppins_semibold"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -93,14 +95,14 @@
                     android:textColorHint="#000000"
                     android:textCursorDrawable="@drawable/grey_cursor_color"
                     android:textSize="15sp"
-                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
                     android:layout_marginTop="6.3dp"
                     android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5"/>
+                    android:background="#d5d5d5" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -112,11 +114,12 @@
                     android:textSize="13.3sp" />
 
                 <EditText
+                    android:id="@+id/reg_mbn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:drawableStart="@drawable/phone_icon"
                     android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/phone_icon"
                     android:fontFamily="@font/poppins_semibold"
                     android:inputType="phone"
                     android:maxLines="1"
@@ -125,14 +128,14 @@
                     android:textColorHint="#000000"
                     android:textCursorDrawable="@drawable/grey_cursor_color"
                     android:textSize="15sp"
-                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
                     android:layout_marginTop="6.3dp"
                     android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5"/>
+                    android:background="#d5d5d5" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,6 +147,7 @@
                     android:textSize="13.3sp" />
 
                 <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+                    android:id="@+id/reg_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -169,31 +173,33 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="6.3dp"
                     android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5"/>
-
-                <Button
-                    android:layout_width="117dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="120dp"
-                    android:background="#b19cd8"
-                    android:gravity="center"
-                    android:text="SIGN UP"
-                    android:textColor="#FFFFFF"
-                    app:cornerRadius="20dp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:background="#d5d5d5" />
 
             </LinearLayout>
 
         </FrameLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/reg_signup"
+                android:layout_width="115dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="480dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:shadowColor="@color/white"
+                android:text="SIGN UP"
+                android:textColor="#FFFFFF"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp" />
 
-
-
-
-
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -220,6 +226,7 @@
                 android:textSize="15sp"/>
 
             <TextView
+                android:id="@+id/reg_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"

@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +22,13 @@ import android.widget.Button;
 public class AccountFragment extends Fragment {
 
     Button profile;
+    Button logout;
+    FirebaseAuth mAuth;
+
+    {
+        FirebaseAuth.getInstance().signOut();
+    }
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,7 +76,10 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
-        Button profile = (Button) view.findViewById(R.id.profile_settings);
+
+        profile = view.findViewById(R.id.profile_settings);
+        logout = view.findViewById(R.id.logout_settings);
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +88,23 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        logout.setOnClickListener(view1 -> {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            Toast.makeText(getContext(), "Logged out", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getActivity(), Login_Activity.class));
+        });
+
         return view;
+
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user == null){
+//            startActivity(new Intent(getActivity(), Login_Activity.class));
+//        }
+//    }
 }

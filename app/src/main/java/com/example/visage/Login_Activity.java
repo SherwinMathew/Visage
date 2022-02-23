@@ -1,18 +1,32 @@
 package com.example.visage;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Login_Activity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
-    TextView sign_up;
+public class Login_Activity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText lgEmail;
+    ShowHidePasswordEditText lgPass;
+    TextView sign_up_here;
     ImageView continue_btn;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -21,26 +35,55 @@ public class Login_Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        sign_up = findViewById(R.id.sign_up);
+        lgEmail = findViewById(R.id.et_log_email);
+        lgPass = findViewById(R.id.et_log_pass);
+        sign_up_here = findViewById(R.id.new_sign_up);
         continue_btn = findViewById(R.id.login_continue);
 
-        continue_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mAuth = FirebaseAuth.getInstance();
 
-                Intent i = new Intent(Login_Activity.this, BottomNavigation.class);
-                startActivity(i);
+        sign_up_here.setOnClickListener(this);
 
-            }
-        });
+        continue_btn.setOnClickListener(this);
 
-        sign_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Login_Activity.this, Registration_Activity.class);
-                startActivity(i);
-            }
-        });
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.new_sign_up:
+                startActivity(new Intent(this, Registration_Activity.class));
+                break;
+            case R.id.login_continue:
+                loginUser();
+        }
+
+    }
+
+    private void loginUser() {
+        String email = lgEmail.getText().toString().trim();
+        String password = lgPass.getText().toString().trim();
+
+        if(TextUtils.isEmpty(email)){
+            lgEmail.setError("Email is required");
+            lgEmail.requestFocus();
+        }else if(TextUtils.isEmpty(password)) {
+            lgPass.setError("Password is required");
+            lgPass.requestFocus();
+        }else{
+            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Login_Activity.this,BottomNavigation.class));
+                    }else {
+
+                        Toast.makeText(Login_Activity.this, "Login Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }
-

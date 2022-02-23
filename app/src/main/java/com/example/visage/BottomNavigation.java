@@ -51,19 +51,18 @@ public class BottomNavigation extends AppCompatActivity {
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
-                // your codes
             }
         });
 
         bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
             @Override
             public void onReselectItem(MeowBottomNavigation.Model item) {
-                // your codes
+
             }
         });
 
 
-        bottomNavigation.setCount(1,"10");
+        //bottomNavigation.setCount(1,"");
         bottomNavigation.show(1,true);
     }
 

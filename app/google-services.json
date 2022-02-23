@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "310143109410",
-    "project_id": "visage-10141",
-    "storage_bucket": "visage-10141.appspot.com"
+    "project_number": "292303474352",
+    "firebase_url": "https://visage-24d75-default-rtdb.firebaseio.com",
+    "project_id": "visage-24d75",
+    "storage_bucket": "visage-24d75.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:310143109410:android:597f57680474ea77403d7b",
+        "mobilesdk_app_id": "1:292303474352:android:aecec408657f232c60b575",
         "android_client_info": {
           "package_name": "com.example.visage"
         }
       },
       "oauth_client": [
         {
-          "client_id": "310143109410-7glc9ato205fu48f4l31im0spijn5jf5.apps.googleusercontent.com",
+          "client_id": "292303474352-mirnr6btrt222f8rsrqjegrn2urg4t8q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDQqn-gjBLox_cRqaJV2tPKPlLz9zEx_44"
+          "current_key": "AIzaSyBjwKuBKQ9_QfkOwLjjuQ8PQbaFUask0LA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "310143109410-7glc9ato205fu48f4l31im0spijn5jf5.apps.googleusercontent.com",
+              "client_id": "292303474352-mirnr6btrt222f8rsrqjegrn2urg4t8q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
