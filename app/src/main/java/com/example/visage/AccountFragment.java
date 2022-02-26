@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +26,7 @@ public class AccountFragment extends Fragment {
     Button profile;
     Button logout;
     FirebaseAuth mAuth;
+    Switch switchAccount;
 
     {
         FirebaseAuth.getInstance().signOut();
@@ -95,9 +98,21 @@ public class AccountFragment extends Fragment {
             startActivity(new Intent(getActivity(), Login_Activity.class));
         });
 
+        switchAccount = view.findViewById(R.id.merchant_switch);
+
+        switchAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(
+                        compoundButton.isChecked())
+                        startActivity(new Intent(getActivity(),Merchant_Introductory.class));
+            }
+        });
+
         return view;
 
     }
+
 
 //    @Override
 //    public void onStart() {

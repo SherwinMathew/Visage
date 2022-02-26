@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -77,7 +76,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login_Activity.this,BottomNavigation.class));
+                        startActivity(new Intent(Login_Activity.this, BottomNavigationCustomer.class));
                     }else {
 
                         Toast.makeText(Login_Activity.this, "Login Error", Toast.LENGTH_SHORT).show();

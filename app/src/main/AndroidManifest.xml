@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.visage">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
+            android:name=".Merchant_Registeration"
+            android:exported="false" />
+        <activity
+            android:name=".Merchant_Introductory"
+            android:exported="false" />
+        <activity
+            android:name=".customer_page"
+            android:exported="false" />
+        <activity
             android:name=".Profile_Activity"
             android:exported="false" />
         <activity
@@ -21,8 +30,9 @@
         <activity android:name=".Introductory_Activity" />
         <activity android:name=".Registration_Activity" />
         <activity android:name=".Login_Activity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".BottomNavigation"
+            android:name=".BottomNavigationCustomer"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

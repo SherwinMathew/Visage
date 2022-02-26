@@ -7,14 +7,14 @@ import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
-public class BottomNavigation extends AppCompatActivity {
+public class BottomNavigationCustomer extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bottom_navigation);
+        setContentView(R.layout.activity_bottom_navigation_customer);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 

@@ -70,11 +70,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //String menu = getArguments().getString("Menu");
-        Button map = (Button) view.findViewById(R.id.map_test);
-        map.setOnClickListener(view1 -> {
-            Intent i = new Intent(getContext(),Map_Activity.class);
-            startActivity(i);
-        });
+//        Button map = (Button) view.findViewById(R.id.map_test);
+//        map.setOnClickListener(view1 -> {
+//            Intent i = new Intent(getContext(),Map_Activity.class);
+//            startActivity(i);
+//        });
 
         return view;
 
