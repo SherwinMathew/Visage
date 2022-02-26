@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/acct_lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/profile_settings"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="Profile"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/logout_settings"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_settings"
+            android:paddingEnd="10dp"
+            android:text="logout"
+            android:textColor="#FFFFFF" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/acct_lay1">
+
+        <Switch
+            android:id="@+id/merchant_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="20dp"
+            android:text="switch to merchant mode" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

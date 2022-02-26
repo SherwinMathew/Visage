@@ -2,4 +2,13 @@
     <string name="app_name">Visage</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address">Address</string>
+    <string name="add_info">Add Information</string>
+    <string name="user_address">xx/xxxx, xxxxxxx,xxxxxxxx</string>
+    <string name="mobile_no">Mobile</string>
+    <string name="phn_no">+91 xxxxxxxxxx</string>
+    <string name="your_email">Email</string>
+    <string name="mail_id">xxxxxxxxxxxxx@gmail.com</string>
+    <string name="my_pf">My \nProfile</string>
+    <string name="search_text">Search spa, saloons, parlours.....</string>
 </resources>

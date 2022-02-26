@@ -21,7 +21,7 @@ public class OnBoardingFragment3 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding3, container, false);
 
-        skip = root.findViewById(R.id.skip);
+        skip = root.findViewById(R.id.skip_onboard_3);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

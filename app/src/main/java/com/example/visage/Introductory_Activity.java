@@ -18,7 +18,7 @@ import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-public class Introductory_Activity extends AppCompatActivity {
+public class  Introductory_Activity extends AppCompatActivity {
 
     ImageView logo,appName,splashImg;
     LottieAnimationView lottieAnimationView;

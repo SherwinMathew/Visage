@@ -39,10 +39,9 @@ public class Map_Activity extends AppCompatActivity {
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                 Intent intent = new Intent();
                 intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Uri uri = Uri.fromParts("package", getPackageName(), "");
+                Uri uri = Uri.fromParts("package", getPackageName(),"");
                 intent.setData(uri);
                 startActivity(intent);
-                Toast.makeText(Map_Activity.this, "Please set permission (VISAGE APP)", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -52,5 +51,7 @@ public class Map_Activity extends AppCompatActivity {
             }
         }).check();
     }
-
 }
+
+
+

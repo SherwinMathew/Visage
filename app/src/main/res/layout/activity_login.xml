@@ -51,6 +51,7 @@
                     android:textSize="13.3sp" />
 
                 <EditText
+                    android:id="@+id/et_log_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -82,6 +83,7 @@
                     android:textSize="13.3sp" />
 
                 <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+                    android:id="@+id/et_log_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="11.7dp"
@@ -195,7 +197,7 @@
                 android:textSize="15sp"/>
 
             <TextView
-                android:id="@+id/sign_up"
+                android:id="@+id/new_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
