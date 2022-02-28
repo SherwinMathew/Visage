@@ -80,16 +80,16 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
 
-        profile = view.findViewById(R.id.profile_settings);
+        //profile = view.findViewById(R.id.profile_settings);
         logout = view.findViewById(R.id.logout_settings);
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent p = new Intent(getContext(),Profile_Activity.class);
-                startActivity(p);
-            }
-        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent p = new Intent(getContext(),Profile_Activity.class);
+//                startActivity(p);
+//            }
+//        });
 
         logout.setOnClickListener(view1 -> {
             FirebaseAuth auth = FirebaseAuth.getInstance();
