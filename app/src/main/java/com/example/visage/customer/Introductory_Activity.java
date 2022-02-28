@@ -1,22 +1,18 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Adapter;
 import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.visage.R;
 
 public class  Introductory_Activity extends AppCompatActivity {
 
@@ -70,13 +66,13 @@ public class  Introductory_Activity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    OnBoardingFragment1 tab1 = new OnBoardingFragment1();
+                    com.example.visage.Customer.OnBoardingFragment1 tab1 = new com.example.visage.Customer.OnBoardingFragment1();
                     return tab1;
                 case 1:
-                    OnBoardingFragment2 tab2 = new OnBoardingFragment2();
+                    com.example.visage.Customer.OnBoardingFragment2 tab2 = new com.example.visage.Customer.OnBoardingFragment2();
                     return tab2;
                 case 2:
-                    OnBoardingFragment3 tab3 = new OnBoardingFragment3();
+                    com.example.visage.Customer.OnBoardingFragment3 tab3 = new com.example.visage.Customer.OnBoardingFragment3();
                     return tab3;
             }
             return null;

@@ -1,4 +1,4 @@
-package com.example.visage;
+package com.example.visage.Merchant;
 
 public class MerchantsInfo {
 

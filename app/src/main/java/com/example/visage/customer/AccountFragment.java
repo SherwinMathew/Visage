@@ -1,4 +1,4 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,10 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.visage.Merchant.Merchant_Registration;
+import com.example.visage.Profile_Activity;
+import com.example.visage.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,7 +88,7 @@ public class AccountFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent p = new Intent(getContext(),Profile_Activity.class);
+                Intent p = new Intent(getContext(), Profile_Activity.class);
                 startActivity(p);
             }
         });
@@ -105,7 +107,7 @@ public class AccountFragment extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(
                         compoundButton.isChecked())
-                        startActivity(new Intent(getActivity(),Merchant_Registration.class));
+                        startActivity(new Intent(getActivity(), Merchant_Registration.class));
             }
         });
 

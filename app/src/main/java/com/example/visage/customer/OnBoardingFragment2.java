@@ -1,4 +1,4 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,16 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class OnBoardingFragment1 extends Fragment {
+import com.example.visage.R;
+import com.example.visage.Customer.Login_Activity;
+
+public class OnBoardingFragment2 extends Fragment {
 
     TextView skip;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding1, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding2, container, false);
 
-        skip = root.findViewById(R.id.skip_onboard_1);
+        skip = root.findViewById(R.id.skip_onboard_2);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

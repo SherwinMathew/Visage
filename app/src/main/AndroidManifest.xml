@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
-            android:name=".MerchantDashboard"
+            android:name=".Merchant.Merchant_Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Merchant_Registration"
+            android:name=".Merchant.Merchant_Registration"
             android:exported="false" />
         <activity
-            android:name=".Merchant_Introductory"
+            android:name=".Merchant.Merchant_Introductory"
             android:exported="false" />
         <activity
             android:name=".customer_page"
@@ -31,12 +31,12 @@
         <activity
             android:name=".Map_Activity"
             android:exported="false" />
-        <activity android:name=".Introductory_Activity" />
-        <activity android:name=".Registration_Activity" />
-        <activity android:name=".Login_Activity" />
+        <activity android:name=".customer.Introductory_Activity" />
+        <activity android:name=".customer.Registration_Activity" />
+        <activity android:name=".customer.Login_Activity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".BottomNavigationCustomer"
+            android:name=".customer.BottomNavigationCustomer"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

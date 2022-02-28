@@ -1,14 +1,21 @@
-package com.example.visage;
+package com.example.visage.Merchant;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MerchantDashboard extends AppCompatActivity {
+import com.example.visage.R;
+
+public class Merchant_Introductory extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_merchant_dashboard);
+        setContentView(R.layout.activity_merchant_introductory);
+
+
+
+
+
     }
 }
