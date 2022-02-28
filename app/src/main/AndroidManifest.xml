@@ -4,6 +4,7 @@
     package="com.example.visage">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
-            android:name=".Merchant_Registeration"
+            android:name=".MerchantDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Merchant_Registration"
             android:exported="false" />
         <activity
             android:name=".Merchant_Introductory"

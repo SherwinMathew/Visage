@@ -22,8 +22,10 @@
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_login.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_map.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_dashboard.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_introductory.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_registeration.xml" value="0.264" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_registeration.xml" value="0.2" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_registration.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_registration.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
@@ -38,8 +40,10 @@
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/item_add.xml" value="0.16" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/item_email.xml" value="0.1" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/item_info.xml" value="0.1" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/sample.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/splash_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/tmp_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lab/AndroidStudioProjects/Visage/app/src/main/res/layout/typ_bus_dropdown.xml" value="0.1" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/drawable-v24/layout_bg.xml" value="0.1" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/drawable/location_icon.xml" value="0.2095" />

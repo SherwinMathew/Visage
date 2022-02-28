@@ -1,17 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Visage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Visage" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#b19cd8</item>
         <item name="colorPrimaryVariant">#ce9dd9</item>
-        <item name="colorOnPrimary">#000000</item>
+        <item name="colorOnPrimary">#ce9dd9</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#b19cd8</item>
         <item name="colorSecondaryVariant">#e8bffb</item>
-        <item name="colorOnSecondary">#000000</item>
+        <item name="colorOnSecondary">#ce9dd9</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">#000000</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--  Inpu Layout Rounded  -->
+    <style name="Inplayout.Round" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxStrokeColor">@color/white</item>
+    </style>
+    <!--    -->
 
 </resources>

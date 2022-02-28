@@ -118,7 +118,7 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
                         }
                     });
                 } else {
-                    Toast.makeText(Registration_Activity.this, "Registration Error1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration_Activity.this, "Registration Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });

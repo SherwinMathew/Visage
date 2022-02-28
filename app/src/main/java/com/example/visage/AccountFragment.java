@@ -105,7 +105,7 @@ public class AccountFragment extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(
                         compoundButton.isChecked())
-                        startActivity(new Intent(getActivity(),Merchant_Introductory.class));
+                        startActivity(new Intent(getActivity(),Merchant_Registration.class));
             }
         });
 
