@@ -3,6 +3,7 @@ package com.example.visage.Merchant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -13,8 +14,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.visage.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +42,7 @@ public class Merchant_Registration extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     MerchantsInfo merchantsInfo;
+    FirebaseAuth auth;
 
 
     @Override
@@ -60,6 +66,8 @@ public class Merchant_Registration extends AppCompatActivity {
 //        availServices = findViewById(R.id.avail_service);
         merMessage = findViewById(R.id.mer_message);
         submit = findViewById(R.id.submit_btn);
+
+        auth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("MerchantsInfo");
@@ -135,15 +143,33 @@ public class Merchant_Registration extends AppCompatActivity {
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.setValue(merchantsInfo);
-                        Toast.makeText(Merchant_Registration.this, "Data added", Toast.LENGTH_SHORT).show();
+                        databaseReference.child(auth.getCurrentUser().getUid()).setValue(merchantsInfo)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful())
+                                        {
+                                            Toast.makeText(Merchant_Registration.this, "Data added", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(Merchant_Registration.this,Merchant_Dashboard.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(Merchant_Registration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Merchant_Registration.this, "Failed to add data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Merchant_Registration.this, "Failed to add data : "+ error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
 
         });

@@ -62,15 +62,20 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void loginUser() {
+
+        continue_btn.setVisibility(View.INVISIBLE);
+
         String email = lgEmail.getText().toString().trim();
         String password = lgPass.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             lgEmail.setError("Email is required");
             lgEmail.requestFocus();
+            continue_btn.setVisibility(View.VISIBLE);
         }else if(TextUtils.isEmpty(password)) {
             lgPass.setError("Password is required");
             lgPass.requestFocus();
+            continue_btn.setVisibility(View.VISIBLE);
         }else{
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
