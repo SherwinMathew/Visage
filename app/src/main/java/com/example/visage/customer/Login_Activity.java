@@ -1,4 +1,4 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.visage.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -52,7 +53,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
         switch (view.getId()){
             case R.id.new_sign_up:
-                startActivity(new Intent(this, Registration_Activity.class));
+                startActivity(new Intent(this, com.example.visage.customer.Registration_Activity.class));
                 break;
             case R.id.login_continue:
                 loginUser();
@@ -76,7 +77,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login_Activity.this, BottomNavigationCustomer.class));
+                        startActivity(new Intent(Login_Activity.this, com.example.visage.Customer.BottomNavigationCustomer.class));
                     }else {
 
                         Toast.makeText(Login_Activity.this, "Login Error", Toast.LENGTH_SHORT).show();

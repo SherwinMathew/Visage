@@ -1,4 +1,4 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.visage.R;
 
 public class BottomNavigationCustomer extends AppCompatActivity {
 
@@ -31,16 +32,16 @@ public class BottomNavigationCustomer extends AppCompatActivity {
 
                 switch (item.getId()){
                     case 1:
-                        fragment = new HomeFragment();
+                        fragment = new com.example.visage.Customer.HomeFragment();
                         break;
                     case 2:
-                        fragment = new CalendarFragment();
+                        fragment = new com.example.visage.Customer.CalendarFragment();
                         break;
                     case 3:
-                        fragment = new CartFragment();
+                        fragment = new com.example.visage.Customer.CartFragment();
                         break;
                     case 4:
-                        fragment = new AccountFragment();
+                        fragment = new com.example.visage.Customer.AccountFragment();
                         break;
                 }
 

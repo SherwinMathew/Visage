@@ -11,4 +11,11 @@
     <string name="mail_id">xxxxxxxxxxxxx@gmail.com</string>
     <string name="my_pf">My \nProfile</string>
     <string name="search_text">Search spa, saloons, parlours.....</string>
+    <string-array name="typ_of_business">
+        <item>Individual></item>
+        <item>Spa></item>
+        <item>Salon></item>
+        <item>Beauty Parlor></item>
+    </string-array>
 </resources>
+

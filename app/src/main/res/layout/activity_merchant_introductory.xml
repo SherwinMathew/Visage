@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Merchant_Introductory">
+    tools:context=".Merchant.Merchant_Introductory">
 
     <TextView
         android:id="@+id/visage_business"
