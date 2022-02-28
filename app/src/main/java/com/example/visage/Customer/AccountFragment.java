@@ -1,8 +1,9 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,11 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.visage.Merchant.Merchant_Introductory;
+import com.example.visage.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,14 +35,13 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class AccountFragment extends Fragment {
 
-    Button profile;
     Button logout;
-    FirebaseAuth mAuth;
-    Switch switchAccount;
+    TextView tv_name,tv_email,tv_phone;
+    FirebaseAuth auth;
+    ProgressBar progressBar;
 
-    {
-        FirebaseAuth.getInstance().signOut();
-    }
+
+    Switch switchAccount;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -55,6 +66,7 @@ public class AccountFragment extends Fragment {
      * @return A new instance of fragment AccountFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     public static AccountFragment newInstance(String param1, String param2) {
         AccountFragment fragment = new AccountFragment();
         Bundle args = new Bundle();
@@ -71,6 +83,8 @@ public class AccountFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -80,22 +94,57 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
 
-        //profile = view.findViewById(R.id.profile_settings);
         logout = view.findViewById(R.id.logout_settings);
+        tv_email = view.findViewById(R.id.prof_email);
+        tv_name = view.findViewById(R.id.prof_name);
+        tv_phone = view.findViewById(R.id.prof_mobile);
+        progressBar = view.findViewById(R.id.progressBar_profile);
 
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent p = new Intent(getContext(),Profile_Activity.class);
-//                startActivity(p);
-//            }
-//        });
+        progressBar.setVisibility(View.VISIBLE);
+
+        auth = FirebaseAuth.getInstance();
+
+        FirebaseDatabase database;
+        DatabaseReference databaseReference;
+
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Users");
+
+        databaseReference.child(auth.getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        Users obj = snapshot.getValue(Users.class);
+
+                        String email = obj.getEmail();
+                        String mobile = obj.getMobilenumber();
+                        String name = obj.getName();
+
+                        if(email.isEmpty() || mobile.isEmpty() || name.isEmpty())
+                        {
+                            Toast.makeText(getContext(), "Data null", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            tv_name.setText(obj.getName());
+                            tv_email.setText(obj.getEmail());
+                            tv_phone.setText(obj.getMobilenumber());
+                            progressBar.setVisibility(View.GONE);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         logout.setOnClickListener(view1 -> {
-            FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signOut();
             Toast.makeText(getContext(), "Logged out", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(), Login_Activity.class));
+            startActivity(new Intent(getActivity(), com.example.visage.Customer.Login_Activity.class));
         });
 
         switchAccount = view.findViewById(R.id.merchant_switch);
@@ -103,11 +152,11 @@ public class AccountFragment extends Fragment {
         switchAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(
-                        compoundButton.isChecked())
-                        startActivity(new Intent(getActivity(),Merchant_Introductory.class));
+                if(compoundButton.isChecked())
+                        startActivity(new Intent(getActivity(), Merchant_Introductory.class));
             }
         });
+
 
         return view;
 

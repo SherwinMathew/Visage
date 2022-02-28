@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+
 import com.example.visage.R;
 
 public class BottomNavigationCustomer extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class BottomNavigationCustomer extends AppCompatActivity {
                         fragment = new com.example.visage.Customer.CartFragment();
                         break;
                     case 4:
-                        fragment = new com.example.visage.Customer.AccountFragment();
+                        fragment = new AccountFragment();
                         break;
                 }
 

@@ -25,9 +25,7 @@ import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
 public class Registration_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText regName;
-    EditText regEmail;
-    EditText regMbn;
+    EditText regName,regEmail,regMbn;
     ShowHidePasswordEditText regPass;
     Button regSignup;
     TextView regLogin;

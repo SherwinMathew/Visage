@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#b19cd8 "
     android:padding="30dp"
-    tools:context=".customer.Registration_Activity">
+    tools:context=".Customer.Registration_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"

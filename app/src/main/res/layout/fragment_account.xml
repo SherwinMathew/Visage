@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#f5f5f5"
     android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-    tools:context=".AccountFragment">
+    tools:context=".Customer.AccountFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <!--    <RelativeLayout-->
@@ -41,17 +41,16 @@
         app:srcCompat="@drawable/top_background" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/prof_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="9895123456"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/prof_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/prof_email"
+        app:layout_constraintTop_toBottomOf="@+id/prof_email" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -65,11 +64,11 @@
         app:srcCompat="@drawable/profile" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/prof_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Jeff Johnson"
+        android:layout_marginEnd="100dp"
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -79,17 +78,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/prof_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="jeffjohnson@gmail.com"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/prof_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/prof_name"
+        app:layout_constraintTop_toBottomOf="@+id/prof_name" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -103,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/prof_email">
 
 
         <LinearLayout
@@ -261,6 +259,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_profile"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="69dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="5dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

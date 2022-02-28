@@ -53,7 +53,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
         switch (view.getId()){
             case R.id.new_sign_up:
-                startActivity(new Intent(this, com.example.visage.customer.Registration_Activity.class));
+                startActivity(new Intent(this, com.example.visage.Customer.Registration_Activity.class));
                 break;
             case R.id.login_continue:
                 loginUser();
@@ -79,7 +79,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Login_Activity.this, com.example.visage.Customer.BottomNavigationCustomer.class));
                     }else {
-
                         Toast.makeText(Login_Activity.this, "Login Error", Toast.LENGTH_SHORT).show();
                     }
                 }

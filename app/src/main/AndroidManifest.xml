@@ -31,12 +31,12 @@
         <activity
             android:name=".Map_Activity"
             android:exported="false" />
-        <activity android:name=".customer.Introductory_Activity" />
-        <activity android:name=".customer.Registration_Activity" />
-        <activity android:name=".customer.Login_Activity" />
+        <activity android:name=".Customer.Introductory_Activity" />
+        <activity android:name=".Customer.Registration_Activity" />
+        <activity android:name=".Customer.BottomNavigationCustomer" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".customer.BottomNavigationCustomer"
+            android:name=".Customer.Login_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
