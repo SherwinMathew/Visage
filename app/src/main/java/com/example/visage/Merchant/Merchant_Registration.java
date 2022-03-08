@@ -62,8 +62,6 @@ public class Merchant_Registration extends AppCompatActivity {
         businessName = findViewById(R.id.business_name);
         contactNumber = findViewById(R.id.contact_number);
         address = findViewById(R.id.address);
-//        businessType = findViewById(R.id.business_type);
-//        availServices = findViewById(R.id.avail_service);
         merMessage = findViewById(R.id.mer_message);
         submit = findViewById(R.id.submit_btn);
 

@@ -43,8 +43,7 @@ public class MerchantsInfo {
     }
 
     public void setMerchantAddress(String merchantAddress) {
-        this.merchantAddress = merchantAddress;
-    }
+        this.merchantAddress = merchantAddress; }
 
     public String getBusinessType() {
         return businessType;

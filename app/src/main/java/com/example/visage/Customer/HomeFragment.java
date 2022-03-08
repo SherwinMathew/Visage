@@ -1,14 +1,22 @@
 package com.example.visage.Customer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.visage.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,10 @@ import com.example.visage.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
+    TextView switchToSearch;
+    RecyclerView recyclerCategories;
+    RecyclerView recyclerItems;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +88,83 @@ public class HomeFragment extends Fragment {
 //            startActivity(i);
 //        });
 
+        switchToSearch = view.findViewById(R.id.to_search_bar);
+        recyclerCategories = view.findViewById(R.id.recycler_categories);
+        recyclerItems = view.findViewById(R.id.recycler_services);
+
+        setCategories();
+        setServiceItem(0);
+
+        switchToSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),SearchView_Activity.class));
+            }
+        });
+
         return view;
+
+    }
+
+    private void setCategories() {
+        List<ServiceCategory> data = new ArrayList<>();
+
+        ServiceCategory serviceCategory = new ServiceCategory("Hair",R.drawable.hair_treatment);
+        ServiceCategory serviceCategory2 = new ServiceCategory("Skin",R.drawable.hair_treatment);
+        ServiceCategory serviceCategory3 = new ServiceCategory("Manicure",R.drawable.hair_treatment);
+        ServiceCategory serviceCategory4 = new ServiceCategory("Spa",R.drawable.hair_treatment);
+
+        data.add(serviceCategory);
+        data.add(serviceCategory2);
+        data.add(serviceCategory3);
+        data.add(serviceCategory4);
+
+        ServiceCategoryAdapter serviceCategoryAdapter = new ServiceCategoryAdapter(data, getActivity(), new ServiceCategoryAdapter.OnCategoryClick() {
+            @Override
+            public void onClick(int pos) {
+                setServiceItem(pos);
+            }
+        });
+
+        recyclerCategories.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recyclerCategories.setAdapter(serviceCategoryAdapter);
+        serviceCategoryAdapter.notifyDataSetChanged();
+    }
+
+    private void setServiceItem(int pos) {
+        List<ServiceItem> serviceItems = new ArrayList<>();
+        switch (pos){
+            case 0:
+                ServiceItem serviceItem = new ServiceItem("Hair coloring",4.5f,1500,R.drawable.hair_coloring);
+                ServiceItem serviceItem2 = new ServiceItem("Hair coloring",5f,1000,R.drawable.hair_coloring);
+
+                serviceItems.add(serviceItem);
+                serviceItems.add(serviceItem2);
+
+                break;
+            case 1:
+                ServiceItem serviceItem5 = new ServiceItem("Hair coloring",4.5f,2000,R.drawable.hair_coloring);
+                ServiceItem serviceItem6 = new ServiceItem("Hair coloring",5f,2500,R.drawable.hair_coloring);
+
+                serviceItems.add(serviceItem5);
+                serviceItems.add(serviceItem6);
+
+                break;
+            case 2:
+                ServiceItem serviceItem9 = new ServiceItem("Hair coloring",4.5f,900,R.drawable.hair_coloring);
+                ServiceItem serviceItem10 = new ServiceItem("Hair coloring",5f,700,R.drawable.hair_coloring);
+
+                serviceItems.add(serviceItem9);
+                serviceItems.add(serviceItem10);
+
+                break;
+
+        }
+
+        ServiceAdapter serviceAdapter = new ServiceAdapter(serviceItems);
+        recyclerItems.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+
+        recyclerItems.setAdapter(serviceAdapter);
 
     }
 

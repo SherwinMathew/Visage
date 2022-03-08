@@ -18,10 +18,9 @@ import android.widget.Toast;
 
 import com.example.visage.Merchant.Merchant_Introductory;
 import com.example.visage.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -102,44 +101,54 @@ public class AccountFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        auth = FirebaseAuth.getInstance();
+        try{
 
-        FirebaseDatabase database;
-        DatabaseReference databaseReference;
+            auth = FirebaseAuth.getInstance();
 
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Users");
+            FirebaseDatabase database;
+            DatabaseReference databaseReference;
 
-        databaseReference.child(auth.getCurrentUser().getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+            database = FirebaseDatabase.getInstance();
+            databaseReference = database.getReference("Users");
 
-                        Users obj = snapshot.getValue(Users.class);
 
-                        String email = obj.getEmail();
-                        String mobile = obj.getMobilenumber();
-                        String name = obj.getName();
+            if(auth.getCurrentUser() != null){
+                databaseReference.child(auth.getCurrentUser().getUid())
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        if(email.isEmpty() || mobile.isEmpty() || name.isEmpty())
-                        {
-                            Toast.makeText(getContext(), "Data null", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            tv_name.setText(obj.getName());
-                            tv_email.setText(obj.getEmail());
-                            tv_phone.setText(obj.getMobilenumber());
-                            progressBar.setVisibility(View.GONE);
-                        }
+                                Users obj = snapshot.getValue(Users.class);
 
-                    }
+                                String email = obj.getEmail();
+                                String mobile = obj.getMobilenumber();
+                                String name = obj.getName();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                                if(email.isEmpty() || mobile.isEmpty() || name.isEmpty())
+                                {
+                                    Toast.makeText(getContext(), "Data null", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    tv_name.setText(obj.getName());
+                                    tv_email.setText(obj.getEmail());
+                                    tv_phone.setText(obj.getMobilenumber());
+                                    progressBar.setVisibility(View.GONE);
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            } else Toast.makeText(getActivity(), "Account null", Toast.LENGTH_SHORT).show();
+
+        } catch (Error error){
+            Toast.makeText(getActivity(), "Error " + error, Toast.LENGTH_SHORT).show();
+        }
 
         logout.setOnClickListener(view1 -> {
             auth.signOut();
@@ -163,12 +172,4 @@ public class AccountFragment extends Fragment {
     }
 
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        if (user == null){
-//            startActivity(new Intent(getActivity(), Login_Activity.class));
-//        }
-//    }
 }

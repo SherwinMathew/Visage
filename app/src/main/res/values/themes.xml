@@ -26,6 +26,12 @@
         <item name="boxCornerRadiusTopStart">10dp</item>
         <item name="boxStrokeColor">@color/white</item>
     </style>
+    <style name="Theme.Visage.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Visage.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Visage.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!--    -->
 
 </resources>

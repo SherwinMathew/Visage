@@ -11,30 +11,38 @@
     <RelativeLayout
         android:id="@+id/lay1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/white"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:elevation="8dp"
-        android:padding="20dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_alignParentLeft="true"
-            android:text="@string/search_text"
-            android:textColor="@color/black" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/location_card_lay"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Location...." />
+
+        </androidx.cardview.widget.CardView>
+
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/notification_icon"
-            android:padding="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@+id/location_card_lay"
+            android:src="@drawable/notification_icon" />
 
     </RelativeLayout>
 
@@ -42,49 +50,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/search_card_lay"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/white"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:elevation="8dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:text="@string/search_text" />
+                android:id="@+id/to_search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/search_text"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="10dp"/>
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/search_icon">
-
-            </ImageView>
-
-
-
-
-
-
-
-        </RelativeLayout>
-
-
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
+        <TextView
+            android:id="@+id/categories"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Categories"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/categories"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp" />
 
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
+        <TextView
+            android:id="@+id/popular_services"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Popular Services"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_services"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/popular_services"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp" />
 
+    </RelativeLayout>
 
 </LinearLayout>
