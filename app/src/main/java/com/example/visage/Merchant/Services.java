@@ -1,17 +1,17 @@
 package com.example.visage.Merchant;
 
 public class Services {
-
-    public String name,price,description,servicetype;
+    
+    public String name,price,description,service_type;
 
     public Services() {
     }
 
-    public Services(String name, String price, String description, String servicetype) {
+    public Services(String name, String price, String description, String service_type) {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.servicetype = servicetype;
+        this.service_type = service_type;
     }
 
     public String getName() {
@@ -38,12 +38,12 @@ public class Services {
         this.description = description;
     }
 
-    public String getServicetype() {
-        return servicetype;
+    public String getService_type() {
+        return service_type;
     }
 
-    public void setServicetype(String servicetype) {
-        this.servicetype = servicetype;
+    public void setService_type(String service_type) {
+        this.service_type = service_type;
     }
 }
 

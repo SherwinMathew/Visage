@@ -18,7 +18,7 @@
             android:name=".Merchant.BottomNavigationMerchant"
             android:exported="false" />
         <activity
-            android:name=".Merchant.Add_Service"
+            android:name=".Customer.Introductory_Activity"
             android:exported="false" />
         <activity
             android:name=".Customer.SearchView_Activity"
@@ -43,7 +43,7 @@
         <activity android:name=".Customer.Login_Activity" />
         <activity android:name=".Customer.BottomNavigationCustomer" />
         <activity
-            android:name=".Customer.Introductory_Activity"
+            android:name=".Merchant.Add_Service"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
