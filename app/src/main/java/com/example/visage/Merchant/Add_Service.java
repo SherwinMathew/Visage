@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.visage.R;
 
-public class Merchant_Dashboard extends AppCompatActivity {
+public class Add_Service extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_merchant_dashboard);
+        setContentView(R.layout.activity_add_service);
     }
 }

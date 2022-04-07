@@ -162,7 +162,7 @@ public class HomeFragment extends Fragment {
         }
 
         ServiceAdapter serviceAdapter = new ServiceAdapter(serviceItems);
-        recyclerItems.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recyclerItems.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
 
         recyclerItems.setAdapter(serviceAdapter);
 

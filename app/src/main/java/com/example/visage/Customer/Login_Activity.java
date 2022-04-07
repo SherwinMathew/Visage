@@ -77,6 +77,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             lgPass.requestFocus();
             continue_btn.setVisibility(View.VISIBLE);
         }else{
+
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

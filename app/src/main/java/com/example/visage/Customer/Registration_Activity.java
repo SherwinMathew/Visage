@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.example.visage.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
 
@@ -30,6 +32,8 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
     Button regSignup;
     TextView regLogin;
     FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
         regSignup = findViewById(R.id.reg_signup);
         regLogin = findViewById(R.id.reg_login);
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         regLogin.setOnClickListener(this);
         regSignup.setOnClickListener(this);
@@ -97,26 +102,39 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
             regPass.requestFocus();
             return;
         }
+
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Users user = new Users(name, email, mobilenumber);
-                    FirebaseDatabase.getInstance().getReference("Users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Registration_Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
-                            } else {
-                                Toast.makeText(Registration_Activity.this, "Registration Error", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                } else {
-                    Toast.makeText(Registration_Activity.this, "Registration Error", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful())
+                {
+                    Users user = new Users(name, email, mobilenumber,"user");
+
+                    firestore.collection("USERS").document(email)
+                            .set(user)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(Registration_Activity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(Registration_Activity.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Registration_Activity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                }
+                else {
+                    Toast.makeText(Registration_Activity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

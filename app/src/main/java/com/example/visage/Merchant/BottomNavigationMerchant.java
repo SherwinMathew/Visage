@@ -1,37 +1,38 @@
-package com.example.visage.Customer;
+package com.example.visage.Merchant;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-
+import com.example.visage.Customer.AccountFragment;
 import com.example.visage.R;
 
-public class BottomNavigationCustomer extends AppCompatActivity {
+public class BottomNavigationMerchant extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bottom_navigation_customer);
+        setContentView(R.layout.activity_bottom_navigation_merchant);
 
-        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation = findViewById(R.id.bottom_navigation2);
 
-        //Add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
         bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_cart));
         bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
 
-
-        Fragment home = new com.example.visage.Customer.HomeFragment();
+        Fragment home = new com.example.visage.Merchant.MerchantDashboardFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, home, "");
+        fragmentTransaction.replace(R.id.frame_layout2, home, "");
         fragmentTransaction.commit();
+
 
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
@@ -40,16 +41,10 @@ public class BottomNavigationCustomer extends AppCompatActivity {
 
                 switch (item.getId()){
                     case 1:
-                        fragment = new com.example.visage.Customer.HomeFragment();
+                        fragment = new com.example.visage.Merchant.MerchantDashboardFragment();
                         break;
                     case 2:
-                        fragment = new com.example.visage.Customer.CalendarFragment();
-                        break;
-                    case 3:
-                        fragment = new com.example.visage.Customer.CartFragment();
-                        break;
-                    case 4:
-                        fragment = new AccountFragment();
+                        Toast.makeText(getApplicationContext(), "case 2", Toast.LENGTH_SHORT).show();
                         break;
 
                 }
@@ -71,8 +66,6 @@ public class BottomNavigationCustomer extends AppCompatActivity {
             }
         });
 
-
-        //bottomNavigation.setCount(1,"");
         bottomNavigation.show(1,true);
     }
 
@@ -82,5 +75,5 @@ public class BottomNavigationCustomer extends AppCompatActivity {
                 .replace(R.id.frame_layout,fragment)
                 .commit();
     }
-}
 
+}

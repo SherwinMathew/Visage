@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.example.visage.Merchant.Merchant_Introductory;
 import com.example.visage.R;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +47,7 @@ public class AccountFragment extends Fragment {
 
 
     Switch switchAccount;
-
+    FirebaseFirestore firestore;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,57 +104,54 @@ public class AccountFragment extends Fragment {
         tv_name = view.findViewById(R.id.prof_name);
         tv_phone = view.findViewById(R.id.prof_mobile);
         progressBar = view.findViewById(R.id.progressBar_profile);
+        switchAccount = view.findViewById(R.id.merchant_switch);
 
         progressBar.setVisibility(View.VISIBLE);
 
-        try{
+        firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-            auth = FirebaseAuth.getInstance();
+        firestore.collection("USERS").document(auth.getCurrentUser().getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful())
+                        {
+                            DocumentSnapshot snapshot = task.getResult();
 
-            FirebaseDatabase database;
-            DatabaseReference databaseReference;
+                            Users obj = snapshot.toObject(Users.class);
 
-            database = FirebaseDatabase.getInstance();
-            databaseReference = database.getReference("Users");
+                            String email = obj.getEmail();
+                            String mobile = obj.getMobilenumber();
+                            String name = obj.getName();
 
-
-            if(auth.getCurrentUser() != null){
-                databaseReference.child(auth.getCurrentUser().getUid())
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                Users obj = snapshot.getValue(Users.class);
-
-                                String email = obj.getEmail();
-                                String mobile = obj.getMobilenumber();
-                                String name = obj.getName();
-
-                                if(email.isEmpty() || mobile.isEmpty() || name.isEmpty())
-                                {
-                                    Toast.makeText(getContext(), "Data null", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    tv_name.setText(obj.getName());
-                                    tv_email.setText(obj.getEmail());
-                                    tv_phone.setText(obj.getMobilenumber());
-                                    progressBar.setVisibility(View.GONE);
-                                }
-
+                            if(email.isEmpty() || mobile.isEmpty() || name.isEmpty())
+                            {
+                                Toast.makeText(getContext(), "Data null", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                tv_name.setText(name);
+                                tv_email.setText(email);
+                                tv_phone.setText(mobile);
+                                progressBar.setVisibility(View.GONE);
                             }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            } else Toast.makeText(getActivity(), "Account null", Toast.LENGTH_SHORT).show();
-
-        } catch (Error error){
-            Toast.makeText(getActivity(), "Error " + error, Toast.LENGTH_SHORT).show();
-        }
 
         logout.setOnClickListener(view1 -> {
             auth.signOut();
@@ -156,7 +159,6 @@ public class AccountFragment extends Fragment {
             startActivity(new Intent(getActivity(), com.example.visage.Customer.Login_Activity.class));
         });
 
-        switchAccount = view.findViewById(R.id.merchant_switch);
 
         switchAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

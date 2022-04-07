@@ -14,6 +14,16 @@ public class MerchantsInfo {
 
     }
 
+    public MerchantsInfo(String ownerName, String businessName, String contactNumber, String merchantAddress, String businessType, String availServices, String message) {
+        OwnerName = ownerName;
+        this.businessName = businessName;
+        this.contactNumber = contactNumber;
+        this.merchantAddress = merchantAddress;
+        this.businessType = businessType;
+        this.availServices = availServices;
+        this.message = message;
+    }
+
     public String getOwnerName() {
         return OwnerName;
     }

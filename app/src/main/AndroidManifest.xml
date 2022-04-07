@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
-
         <activity
-            android:name=".Customer.SearchView_Activity"
+            android:name=".Merchant.BottomNavigationMerchant"
             android:exported="false" />
         <activity
-            android:name=".Merchant.Merchant_Dashboard"
+            android:name=".Merchant.Add_Service"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.SearchView_Activity"
             android:exported="false" />
         <activity
             android:name=".Merchant.Merchant_Registration"
@@ -34,12 +38,12 @@
         <activity
             android:name=".Map_Activity"
             android:exported="false" />
-        <activity android:name=".Customer.Introductory_Activity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Customer.Registration_Activity" />
         <activity android:name=".Customer.Login_Activity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Customer.BottomNavigationCustomer" />
         <activity
-            android:name=".Customer.BottomNavigationCustomer"
+            android:name=".Customer.Introductory_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

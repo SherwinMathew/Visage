@@ -25,6 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Merchant_Registration extends AppCompatActivity {
 
@@ -38,10 +42,8 @@ public class Merchant_Registration extends AppCompatActivity {
     TextInputEditText businessOwner,businessName,contactNumber,address,merMessage;
     MaterialButton submit;
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    FirebaseFirestore firestore;
 
-    MerchantsInfo merchantsInfo;
     FirebaseAuth auth;
 
 
@@ -67,10 +69,7 @@ public class Merchant_Registration extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("MerchantsInfo");
-
-        merchantsInfo = new MerchantsInfo();
+        firestore = FirebaseFirestore.getInstance();
 
         businessType.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -89,86 +88,110 @@ public class Merchant_Registration extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ownername = businessOwner.getText().toString().trim();
-                String businessname = businessName.getText().toString().trim();
-                String number = contactNumber.getText().toString().trim();
-                String businesstype = businessType.getText().toString().trim();
-                String availservices = availServices.getText().toString().trim();
-                String message = merMessage.getText().toString().trim();
+                String s_ownername = businessOwner.getText().toString().trim();
+                String s_businessname = businessName.getText().toString().trim();
+                String s_number = contactNumber.getText().toString().trim();
+                String s_businesstype = businessType.getText().toString().trim();
+                String s_availservices = availServices.getText().toString().trim();
+                String s_message = merMessage.getText().toString().trim();
+                String s_address = address.getText().toString().trim();
 
-                if(TextUtils.isEmpty(ownername)){
+                if(s_ownername.isEmpty()){
                     businessOwner.setError("This files is required");
                     businessOwner.requestFocus();
+                    return;
                 }
 
-                if(TextUtils.isEmpty(businessname)){
+                if(s_businessname.isEmpty()){
                     businessName.setError("This files is required");
                     businessName.requestFocus();
+                    return;
                 }
 
-                if(!Patterns.PHONE.matcher(number).matches()){
+                if(!Patterns.PHONE.matcher(s_number).matches()){
                     contactNumber.setError("This files is required");
                     contactNumber.requestFocus();
+                    return;
                 }
 
-                if(TextUtils.isEmpty(businesstype)){
+                if(s_businesstype.isEmpty()){
                     businessType.setError("This files is required");
                     businessType.requestFocus();
+                    return;
                 }
 
-                if(TextUtils.isEmpty(availservices)){
+                if(s_availservices.isEmpty()){
                     availServices.setError("This files is required");
                     availServices.requestFocus();
+                    return;
                 }
 
-                if(TextUtils.isEmpty(message)){
+                if(s_message.isEmpty()){
                     merMessage.setError("This files is required");
                     merMessage.requestFocus();
-                }else{
-                    merchantDetails(ownername,businessname,number,businesstype,availservices,message);
+                    return;
                 }
+
+                MerchantsInfo obj = new MerchantsInfo(s_ownername,s_businessname,s_number,s_address,s_businesstype,s_availservices,s_message);
+                String user_email = auth.getCurrentUser().getEmail();
+
+                if(user_email!=null)
+                {
+                    firestore.collection("MERCHANT").document(user_email)
+                            .set(obj)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Map<String,Object>data = new HashMap<>();
+                                        data.put("user_type","merchant");
+
+                                        firestore.collection("USERS").document(user_email)
+                                                .update(data)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if(task.isSuccessful())
+                                                        {
+                                                            Toast.makeText(Merchant_Registration.this, "Merchant registered successfully", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(Merchant_Registration.this,BottomNavigationMerchant.class));
+                                                        }
+                                                        else
+                                                        {
+                                                            Toast.makeText(Merchant_Registration.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(Merchant_Registration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(Merchant_Registration.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Merchant_Registration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+                else
+                {
+                    Toast.makeText(Merchant_Registration.this, "null email", Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
 
-            private void merchantDetails(String ownername, String businessname, String number, String businesstype,
-                                         String availservices, String message) {
-                merchantsInfo.setOwnerName(ownername);
-                merchantsInfo.setBusinessName(businessname);
-                merchantsInfo.setContactNumber(number);
-                merchantsInfo.setBusinessType(businesstype);
-                merchantsInfo.setAvailServices(availservices);
-                merchantsInfo.setMessage(message);
-
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(auth.getCurrentUser().getUid()).setValue(merchantsInfo)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful())
-                                        {
-                                            Toast.makeText(Merchant_Registration.this, "Data added", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(Merchant_Registration.this,Merchant_Dashboard.class);
-                                            startActivity(i);
-                                        }
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(Merchant_Registration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Merchant_Registration.this, "Failed to add data : "+ error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
 
         });
 

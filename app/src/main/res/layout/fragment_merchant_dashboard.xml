@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Merchant.Merchant_Dashboard">
+    tools:context=".Merchant.MerchantDashboardFragment">
 
-    <RelativeLayout
-        android:id="@+id/mdash_lay1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="20dp"
-            android:text="Visage Business"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/mdash_lay1">
 
         <!-- Card view for displaying the -->
@@ -36,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="15dp"
             android:elevation="10dp"
             app:cardCornerRadius="10dp">
 
@@ -53,16 +37,15 @@
 
                 <!--Pie chart to display the data-->
 
-                <org.eazegraph.lib.charts.PieChart
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/piechart"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:padding="6dp"
 
                     />
 
@@ -71,11 +54,10 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginLeft="20dp"
-                    android:orientation="vertical"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -86,14 +68,14 @@
                         <View
                             android:layout_width="15dp"
                             android:layout_height="match_parent"
-                            android:background="@color/totalBookings"/>
+                            android:background="@color/totalBookings" />
 
                         <!--Text view to display R -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Bookings"
-                            android:paddingLeft="10dp"/>
+                            android:paddingLeft="10dp"
+                            android:text="Total Bookings" />
 
                     </LinearLayout>
 
@@ -108,14 +90,14 @@
                         <View
                             android:layout_width="15dp"
                             android:layout_height="match_parent"
-                            android:background="@color/activeBookings"/>
+                            android:background="@color/activeBookings" />
 
                         <!--Text view to display python text -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Active Bookings"
-                            android:paddingLeft="10dp"/>
+                            android:paddingLeft="10dp"
+                            android:text="Active Bookings" />
 
                     </LinearLayout>
 
@@ -130,14 +112,14 @@
                         <View
                             android:layout_width="15dp"
                             android:layout_height="match_parent"
-                            android:background="@color/cancelledBookings"/>
+                            android:background="@color/cancelledBookings" />
 
                         <!--Text view to display C++ text -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cancelled Bookings"
-                            android:paddingLeft="10dp"/>
+                            android:paddingLeft="10dp"
+                            android:text="Cancelled Bookings" />
 
                     </LinearLayout>
 
@@ -151,16 +133,16 @@
         <!-- Another Card view for displaying -->
         <!-- Use of programming languages -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@+id/cardViewGraph"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:elevation="10dp"
-            app:cardCornerRadius="10dp"
-            android:id="@+id/details">
+            app:cardCornerRadius="10dp">
 
             <!--Relative layout to display -->
             <!-- use of programming languages -->
@@ -174,27 +156,27 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
                     android:text="Bookings(In Percentage):"
                     android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"/>
+                    android:textStyle="bold" />
 
                 <!--View to display the line-->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/color_two"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="5dp"/>
+                    android:background="@color/color_two" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="25dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginBottom="10dp">
 
                     <!--Text view to display R -->
@@ -203,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Total Bookings"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                     <!--Text view to display the -->
                     <!-- percentage of programming language -->
@@ -225,16 +207,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/color_two"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginRight="20dp"
+                    android:background="@color/color_two" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="25dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginBottom="10dp">
 
                     <TextView
@@ -242,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Active Bookings"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                     <!--Text view to display the percentage -->
                     <!-- of programming language used. -->
@@ -261,19 +243,20 @@
                         android:textStyle="bold" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/color_two"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginRight="20dp"
+                    android:background="@color/color_two" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="25dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginBottom="10dp">
 
                     <TextView
@@ -281,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Cancelled Bookings"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                     <!--Text view to display the percentage -->
                     <!-- of programming language used. -->
@@ -299,12 +282,13 @@
                         android:textStyle="bold" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/color_two"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginRight="20dp"
+                    android:background="@color/color_two" />
 
             </LinearLayout>
 
@@ -313,7 +297,5 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
 
-
-
+</FrameLayout>
