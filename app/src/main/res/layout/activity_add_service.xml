@@ -81,9 +81,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/service_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -119,33 +117,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/country_lay"
-                style="@style/Inplayout.Round"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginBottom="12sp"
-                android:drawableEnd="@drawable/ic_drop_down"
-                android:hint="Duration"
-                app:boxStrokeColor="#000000"
-                app:endIconMode="custom"
-                app:endIconTint="@color/black">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/service_duration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:inputType="text">
-
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Inplayout.Round"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,7 +144,7 @@
                 android:hint="Pincode" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/sub_btn"
+                android:id="@+id/addser_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
