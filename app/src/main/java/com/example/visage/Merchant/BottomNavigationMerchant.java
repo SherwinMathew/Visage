@@ -25,7 +25,7 @@ public class BottomNavigationMerchant extends AppCompatActivity {
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_cart));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_baseline_analytics_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
 
         Fragment home = new com.example.visage.Merchant.MerchantDashboardFragment();
@@ -44,9 +44,14 @@ public class BottomNavigationMerchant extends AppCompatActivity {
                         fragment = new com.example.visage.Merchant.MerchantDashboardFragment();
                         break;
                     case 2:
-                        Toast.makeText(getApplicationContext(), "case 2", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),Add_Service.class));
                         break;
-
+                    case 3:
+                        fragment = new com.example.visage.Merchant.MerchantAnalyticsFragment();
+                        break;
+                    case 4:
+                        Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
+                        break;
                 }
 
                 loadFragment(fragment);
@@ -72,7 +77,7 @@ public class BottomNavigationMerchant extends AppCompatActivity {
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout,fragment)
+                .replace(R.id.frame_layout2,fragment)
                 .commit();
     }
 

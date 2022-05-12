@@ -106,7 +106,7 @@ public class AccountFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar_profile);
         switchAccount = view.findViewById(R.id.merchant_switch);
 
-        progressBar.setVisibility(View.VISIBLE);
+       // progressBar.setVisibility(View.VISIBLE);
 
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
