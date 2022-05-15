@@ -152,7 +152,6 @@ public class FragmentAddService extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful())
                                 {
-
                                     firestore.collection("SERVICES").document(s_category)
                                             .collection(s_category).document(s_name)
                                             .get()
@@ -164,7 +163,6 @@ public class FragmentAddService extends Fragment {
                                                         ArrayList<String>details;
                                                         details = new ArrayList<>();
                                                         DocumentSnapshot doc_obj = task.getResult();
-
                                                         FData obj2 = doc_obj.toObject(FData.class);
                                                         details.add(user_email+"@"+s_rate);
                                                        // Toast.makeText(getContext(), "task successful", Toast.LENGTH_SHORT).show();
@@ -237,8 +235,6 @@ public class FragmentAddService extends Fragment {
                                                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
                                             });
-
-
                                 }
                                 else
                                 {
