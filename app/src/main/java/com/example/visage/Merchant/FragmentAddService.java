@@ -97,7 +97,7 @@ public class FragmentAddService extends Fragment {
                 }
                 else if(cat_list.get(i).equals("Hair Care"))
                 {
-                    set_body_care_data();
+                    set_hair_care_data();
                     ArrayAdapter<String> name_adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,hair_care_list);
                     service_name.setAdapter(name_adapter);
                 }

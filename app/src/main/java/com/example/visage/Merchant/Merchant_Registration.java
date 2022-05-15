@@ -164,13 +164,13 @@ public class Merchant_Registration extends AppCompatActivity {
                                                         if(task.isSuccessful())
                                                         {
                                                             Map<String,Object> data1 = new HashMap<>();
-                                                            data.put("booking_count",0);
+                                                            data1.put("booking_count",0);
 
                                                             Toast.makeText(Merchant_Registration.this, "Merchant registered successfully", Toast.LENGTH_SHORT).show();
 
                                                             firestore.collection("MERCHANT").document(user_email)
                                                                     .collection("BOOKINGS").document("ANALYTICS")
-                                                                    .set(data);
+                                                                    .set(data1);
 
                                                             startActivity(new Intent(Merchant_Registration.this,BottomNavigationMerchant.class));
                                                             Merchant_Registration.this.finish();
