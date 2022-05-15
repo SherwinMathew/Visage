@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
     String s_category,s_service;
     TextView tv;
     FirebaseFirestore firestore;
-    String fetched_array;
+    ArrayList<String> fetched_list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,6 @@ public class ListAvailableMerchants extends AppCompatActivity {
         s_category = bundle.getString("CAT");
         s_service = bundle.getString("SUB");
 
-//        s_category = "Body Care";
-//        s_service = "Ayurvedic Body Massage";
-
         tv.setText("Select a merchant for "+s_category+" - "+s_service);
 
         firestore.collection("SERVICES").document(s_category)
@@ -55,8 +54,6 @@ public class ListAvailableMerchants extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful())
                         {
-                            ArrayList<String> fetched_list = new ArrayList<>();
-
                             DocumentSnapshot obj = task.getResult();
                             FData obj2 = obj.toObject(FData.class);
 
@@ -86,6 +83,16 @@ public class ListAvailableMerchants extends AppCompatActivity {
                         Toast.makeText(ListAvailableMerchants.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String separated[] = fetched_list.get(i).split(" ");
+
+                Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
