@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -43,6 +45,8 @@ public class Merchant_Registration extends AppCompatActivity {
     MaterialButton submit;
     FirebaseFirestore firestore;
     FirebaseAuth auth;
+    CheckBox checkbox_home_service;
+    String yes_or_no;
 
 
     @Override
@@ -55,7 +59,7 @@ public class Merchant_Registration extends AppCompatActivity {
         businessType.setAdapter(adapterItems);
 
         working_hours= findViewById(R.id.et_merchant_registration_working_hours);
-        
+        checkbox_home_service = findViewById(R.id.checkbox_home_service);
         businessOwner = findViewById(R.id.business_owner);
         businessName = findViewById(R.id.business_name);
         contactNumber = findViewById(R.id.contact_number);
@@ -74,6 +78,20 @@ public class Merchant_Registration extends AppCompatActivity {
             }
         });
 
+        checkbox_home_service.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked())
+                {
+                    yes_or_no = "yes";
+                }
+                else
+                {
+                    yes_or_no = "no";
+                }
+            }
+        });
+
     
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +103,7 @@ public class Merchant_Registration extends AppCompatActivity {
                 String s_working_hours = working_hours.getText().toString().trim();
                 String s_message = merMessage.getText().toString().trim();
                 String s_address = address.getText().toString().trim();
+
 
                 if(s_ownername.isEmpty()){
                     businessOwner.setError("This fields is required");
@@ -122,7 +141,7 @@ public class Merchant_Registration extends AppCompatActivity {
                     return;
                 }
 
-                MerchantsInfo obj = new MerchantsInfo(s_ownername,s_businessname,s_number,s_address,s_businesstype,s_working_hours,s_message);
+                MerchantsInfo obj = new MerchantsInfo(s_ownername,s_businessname,s_number,s_address,s_businesstype,s_working_hours,s_message,yes_or_no);
                 String user_email = auth.getCurrentUser().getEmail();
 
                 if(user_email!=null)

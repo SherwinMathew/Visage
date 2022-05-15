@@ -9,13 +9,14 @@ public class MerchantsInfo {
     private String businessType;
     private String working_hours;
     private String message;
+    private String providing_home_service;
 
     public MerchantsInfo(){
 
     }
 
     public MerchantsInfo(String ownerName, String businessName, String contactNumber, String merchantAddress,
-                         String businessType, String working_hours, String message) {
+                         String businessType, String working_hours, String message, String providing_home_service) {
         OwnerName = ownerName;
         this.businessName = businessName;
         this.contactNumber = contactNumber;
@@ -23,6 +24,7 @@ public class MerchantsInfo {
         this.businessType = businessType;
         this.working_hours = working_hours;
         this.message = message;
+        this.providing_home_service = providing_home_service;
     }
 
     public String getOwnerName() {
@@ -79,5 +81,13 @@ public class MerchantsInfo {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getProviding_home_service() {
+        return providing_home_service;
+    }
+
+    public void setProviding_home_service(String providing_home_service) {
+        this.providing_home_service = providing_home_service;
     }
 }
