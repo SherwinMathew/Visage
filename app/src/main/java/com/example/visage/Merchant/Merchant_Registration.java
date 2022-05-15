@@ -165,6 +165,7 @@ public class Merchant_Registration extends AppCompatActivity {
                                                         {
                                                             Toast.makeText(Merchant_Registration.this, "Merchant registered successfully", Toast.LENGTH_SHORT).show();
                                                             startActivity(new Intent(Merchant_Registration.this,BottomNavigationMerchant.class));
+                                                            Merchant_Registration.this.finish();
                                                         }
                                                         else
                                                         {

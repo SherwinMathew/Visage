@@ -139,8 +139,8 @@ public class FragmentAddService extends Fragment {
                 String s_rate = serviceRate.getText().toString().trim();
                 String s_info = serviceInfo.getText().toString().trim();
 
-                //String user_email = auth.getCurrentUser().getEmail();
-                String user_email = "brimstone@gmail.com";
+                String user_email = auth.getCurrentUser().getEmail();
+               // String user_email = "brimstone@gmail.com";
 
                 Services obj = new Services(s_rate,s_info);
 

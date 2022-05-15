@@ -69,7 +69,6 @@ public class SearchView_Activity extends AppCompatActivity {
                                 List<MerchantsInfo> lists = new ArrayList<>();
                                 for (DataSnapshot data : task.getResult().getChildren()){
                                     MerchantsInfo info=  data.getValue(MerchantsInfo.class);
-                                    if(info.getAvailServices().equals(searchString)) lists.add(info);
                                 }
                                 updateRecyclerview(lists);
                             } else
