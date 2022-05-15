@@ -77,4 +77,5 @@ dependencies {
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.1'
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+
 }

@@ -21,9 +21,6 @@
             android:name=".Merchant.BottomNavigationMerchant"
             android:exported="false" />
         <activity
-            android:name=".Merchant.Add_Service"
-            android:exported="false" />
-        <activity
             android:name=".Customer.SearchView_Activity"
             android:exported="false" />
         <activity

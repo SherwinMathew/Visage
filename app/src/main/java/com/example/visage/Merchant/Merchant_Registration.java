@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.visage.R;
@@ -34,16 +35,13 @@ public class Merchant_Registration extends AppCompatActivity {
 
 
     String [] types = {"Salon","Spa","Parlor","Individual"};
-    String [] service = {"Hair Styling","Hair Cutting","Hair Coloring","Hair Form","Hair Treatment","Manicure","Bridal","Spa Treatments","Steam with Shower"};
 
-    AutoCompleteTextView businessType,availServices;
+    AutoCompleteTextView businessType;
     ArrayAdapter<String> adapterItems;
-
     TextInputEditText businessOwner,businessName,contactNumber,address,merMessage;
+    EditText working_hours;
     MaterialButton submit;
-
     FirebaseFirestore firestore;
-
     FirebaseAuth auth;
 
 
@@ -56,10 +54,8 @@ public class Merchant_Registration extends AppCompatActivity {
         adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_list,types);
         businessType.setAdapter(adapterItems);
 
-        availServices = findViewById(R.id.avail_service);
-        adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_list,service);
-        availServices.setAdapter(adapterItems);
-
+        working_hours= findViewById(R.id.et_merchant_registration_working_hours);
+        
         businessOwner = findViewById(R.id.business_owner);
         businessName = findViewById(R.id.business_name);
         contactNumber = findViewById(R.id.contact_number);
@@ -78,13 +74,7 @@ public class Merchant_Registration extends AppCompatActivity {
             }
         });
 
-        availServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String service = parent.getItemAtPosition(position).toString();
-            }
-        });
-
+    
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,47 +82,47 @@ public class Merchant_Registration extends AppCompatActivity {
                 String s_businessname = businessName.getText().toString().trim();
                 String s_number = contactNumber.getText().toString().trim();
                 String s_businesstype = businessType.getText().toString().trim();
-                String s_availservices = availServices.getText().toString().trim();
+                String s_working_hours = working_hours.getText().toString().trim();
                 String s_message = merMessage.getText().toString().trim();
                 String s_address = address.getText().toString().trim();
 
                 if(s_ownername.isEmpty()){
-                    businessOwner.setError("This files is required");
+                    businessOwner.setError("This fields is required");
                     businessOwner.requestFocus();
                     return;
                 }
 
                 if(s_businessname.isEmpty()){
-                    businessName.setError("This files is required");
+                    businessName.setError("This fields is required");
                     businessName.requestFocus();
                     return;
                 }
 
                 if(!Patterns.PHONE.matcher(s_number).matches()){
-                    contactNumber.setError("This files is required");
+                    contactNumber.setError("This fields is required");
                     contactNumber.requestFocus();
                     return;
                 }
 
                 if(s_businesstype.isEmpty()){
-                    businessType.setError("This files is required");
+                    businessType.setError("This fields is required");
                     businessType.requestFocus();
                     return;
                 }
 
-                if(s_availservices.isEmpty()){
-                    availServices.setError("This files is required");
-                    availServices.requestFocus();
+                if(s_working_hours.isEmpty()){
+                    working_hours.setError("This fields is required");
+                    working_hours.requestFocus();
                     return;
                 }
 
                 if(s_message.isEmpty()){
-                    merMessage.setError("This files is required");
+                    merMessage.setError("This fields is required");
                     merMessage.requestFocus();
                     return;
                 }
 
-                MerchantsInfo obj = new MerchantsInfo(s_ownername,s_businessname,s_number,s_address,s_businesstype,s_availservices,s_message);
+                MerchantsInfo obj = new MerchantsInfo(s_ownername,s_businessname,s_number,s_address,s_businesstype,s_working_hours,s_message);
                 String user_email = auth.getCurrentUser().getEmail();
 
                 if(user_email!=null)

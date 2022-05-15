@@ -7,20 +7,21 @@ public class MerchantsInfo {
     private String contactNumber;
     private String merchantAddress;
     private String businessType;
-    private String availServices;
+    private String working_hours;
     private String message;
 
     public MerchantsInfo(){
 
     }
 
-    public MerchantsInfo(String ownerName, String businessName, String contactNumber, String merchantAddress, String businessType, String availServices, String message) {
+    public MerchantsInfo(String ownerName, String businessName, String contactNumber, String merchantAddress,
+                         String businessType, String working_hours, String message) {
         OwnerName = ownerName;
         this.businessName = businessName;
         this.contactNumber = contactNumber;
         this.merchantAddress = merchantAddress;
         this.businessType = businessType;
-        this.availServices = availServices;
+        this.working_hours = working_hours;
         this.message = message;
     }
 
@@ -53,7 +54,8 @@ public class MerchantsInfo {
     }
 
     public void setMerchantAddress(String merchantAddress) {
-        this.merchantAddress = merchantAddress; }
+        this.merchantAddress = merchantAddress;
+    }
 
     public String getBusinessType() {
         return businessType;
@@ -63,12 +65,12 @@ public class MerchantsInfo {
         this.businessType = businessType;
     }
 
-    public String getAvailServices() {
-        return availServices;
+    public String getWorking_hours() {
+        return working_hours;
     }
 
-    public void setAvailServices(String availServices) {
-        this.availServices = availServices;
+    public void setWorking_hours(String working_hours) {
+        this.working_hours = working_hours;
     }
 
     public String getMessage() {
