@@ -2,16 +2,25 @@ package com.example.visage.Customer;
 
 public class Users {
 
-    public String name,email,mobilenumber,user_type;
+    public String name,email,mobilenumber,user_type,address;
     public Users(){
 
     }
 
-    public Users(String name,String email,String mobilenumber,String user_type){
+    public Users(String name,String email,String mobilenumber,String user_type,String address){
         this.name = name;
         this.email = email;
         this.mobilenumber = mobilenumber;
         this.user_type = user_type;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {

@@ -30,7 +30,7 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
     EditText regName,regEmail,regMbn;
     ShowHidePasswordEditText regPass;
     Button regSignup;
-    TextView regLogin;
+    TextView regLogin,regAdd;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
 
@@ -47,6 +47,7 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
         regPass = findViewById(R.id.reg_pass);
         regSignup = findViewById(R.id.reg_signup);
         regLogin = findViewById(R.id.reg_login);
+        regAdd = findViewById(R.id.reg_address);
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
@@ -71,6 +72,7 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
         String email = regEmail.getText().toString().trim();
         String mobilenumber = regMbn.getText().toString().trim();
         String password = regPass.getText().toString().trim();
+        String address = regAdd.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)) {
             regName.setError("Name is required");
@@ -102,13 +104,18 @@ public class Registration_Activity extends AppCompatActivity implements View.OnC
             regPass.requestFocus();
             return;
         }
+        if (TextUtils.isEmpty(address)){
+            regAdd.setError("Address is required");
+            regAdd.requestFocus();
+            return;
+        }
 
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())
                 {
-                    Users user = new Users(name, email, mobilenumber,"user");
+                    Users user = new Users(name, email, mobilenumber,"user",address);
 
                     firestore.collection("USERS").document(email)
                             .set(user)

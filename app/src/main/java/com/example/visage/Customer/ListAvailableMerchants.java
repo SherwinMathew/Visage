@@ -3,6 +3,7 @@ package com.example.visage.Customer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.visage.FragmentAddDetails;
 import com.example.visage.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +32,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
     TextView tv;
     FirebaseFirestore firestore;
     ArrayList<String> fetched_list = new ArrayList<>();
-    String s_phone;
+    String s_phone,s_address,s_price,s_merchant_email;
     FirebaseAuth auth;
 
     @Override
@@ -50,7 +52,6 @@ public class ListAvailableMerchants extends AppCompatActivity {
 
         tv.setText("Select a merchant for "+s_category+" - "+s_service);
 
-
         firestore.collection("USERS").document(auth.getCurrentUser().getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -60,6 +61,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                         {
                             DocumentSnapshot snapshot = task.getResult();
                             s_phone = snapshot.getString("mobilenumber");
+                            s_address = snapshot.getString("address");
                             Toast.makeText(ListAvailableMerchants.this, s_phone, Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -97,7 +99,6 @@ public class ListAvailableMerchants extends AppCompatActivity {
                             {
                                 Toast.makeText(ListAvailableMerchants.this, "No registered merchants provide this service", Toast.LENGTH_SHORT).show();
                             }
-
                             //Toast.makeText(ListAvailableMerchants.this, obj2.getAvailable_merchants().toString(), Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -117,31 +118,17 @@ public class ListAvailableMerchants extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Booking obj = new Booking("Vytilla",s_phone,s_service,"evening");
-
                 String separated[] = fetched_list.get(i).split(" ");
-                firestore.collection("MERCHANT").document(separated[0])
-                        .collection("BOOKINGS").document(s_phone)
-                        .set(obj)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful())
-                                {
-                                    Toast.makeText(ListAvailableMerchants.this, "Booking has been made", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    Toast.makeText(ListAvailableMerchants.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(ListAvailableMerchants.this,e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                s_merchant_email = separated[0];
+                s_price = separated[1];
+
+                Intent i2 = new Intent(ListAvailableMerchants.this, FragmentAddDetails.class);
+                i2.putExtra("MERCHANT EMAIL",s_merchant_email);
+                i2.putExtra("ADDRESS",s_address);
+                i2.putExtra("CONTACT",s_phone);
+                i2.putExtra("SERVICE NAME",s_service);
+                i2.putExtra("PRICE",s_price);
+                startActivity(i2);
 
 
                // Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();

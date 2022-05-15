@@ -2,21 +2,21 @@ package com.example.visage.Customer;
 
 public class Booking {
 
-    String location,contact_number,service_name,convenient_time;
+    String address,contact_number,service_name,convenient_time;
 
-    public Booking(String location, String contact_number, String service_name, String convenient_time) {
-        this.location = location;
+    public Booking(String address, String contact_number, String service_name, String convenient_time) {
+        this.address = address;
         this.contact_number = contact_number;
         this.service_name = service_name;
         this.convenient_time = convenient_time;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getContact_number() {
