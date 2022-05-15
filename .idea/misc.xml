@@ -49,6 +49,7 @@
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_cart.xml" value="0.16" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_customer_page.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_dash_board.xml" value="0.264" />
+        <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_fragment_add_details.xml" value="0.264" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_introductory.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_list_available_merchants.xml" value="0.25905797101449274" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_list_sub_services.xml" value="0.2341485507246377" />
@@ -56,6 +57,7 @@
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_map.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_dashboard.xml" value="0.2617753623188406" />
+        <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_detail.xml" value="0.25905797101449274" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_introductory.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_registeration.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/sherw/AndroidStudioProjects/Visage/app/src/main/res/layout/activity_merchant_registration.xml" value="0.23505434782608695" />

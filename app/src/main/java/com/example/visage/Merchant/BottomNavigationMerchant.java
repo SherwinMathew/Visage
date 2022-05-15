@@ -44,6 +44,7 @@ public class BottomNavigationMerchant extends AppCompatActivity {
                         fragment = new com.example.visage.Merchant.MerchantDashboardFragment();
                         break;
                     case 2:
+                        //startActivity(new Intent(getApplicationContext(),Add_Service.class));
                         break;
                     case 3:
                         fragment = new com.example.visage.Merchant.MerchantAnalyticsFragment();

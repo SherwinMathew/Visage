@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
+            android:name=".FragmentAddDetails"
+            android:exported="false" />
+        <activity
             android:name=".Customer.ListAvailableMerchants"
             android:exported="false" />
         <activity
