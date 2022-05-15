@@ -117,10 +117,34 @@ public class ListAvailableMerchants extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Booking obj = new Booking("Vytilla",s_phone,s_service,"evening");
+
                 String separated[] = fetched_list.get(i).split(" ");
-//                firestore.collection("MERCHANT").document(separated[0])
-//                        .collection("BOOKINGS").document()
-                Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();
+                firestore.collection("MERCHANT").document(separated[0])
+                        .collection("BOOKINGS").document(s_phone)
+                        .set(obj)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful())
+                                {
+                                    Toast.makeText(ListAvailableMerchants.this, "Booking has been made", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Toast.makeText(ListAvailableMerchants.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(ListAvailableMerchants.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+               // Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();
             }
         });
 
