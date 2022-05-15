@@ -19,6 +19,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BookingActivity extends AppCompatActivity {
 
@@ -104,6 +106,40 @@ public class BookingActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful())
                                 {
+                                    firestore.collection("MERCHANT").document(s_merchant_email)
+                                            .collection("BOOKINGS").document("ANALYTICS")
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        DocumentSnapshot snapshot = task.getResult();
+
+                                                        int val = Integer.parseInt(snapshot.getString("booking_count"));
+                                                        val = val+1;
+
+                                                        Map<String,Object> data = new HashMap<>();
+                                                        data.put("booking_count",val);
+
+                                                        firestore.collection("MERCHANT").document(s_merchant_email)
+                                                                .collection("BOOKINGS").document("ANALYTICS")
+                                                                .set(data);
+
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(BookingActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(BookingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+
                                     Toast.makeText(BookingActivity.this, "Booking has been made successfully", Toast.LENGTH_SHORT).show();
                                 }
                                 else

@@ -96,6 +96,7 @@ public class Merchant_Registration extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String s_ownername = businessOwner.getText().toString().trim();
                 String s_businessname = businessName.getText().toString().trim();
                 String s_number = contactNumber.getText().toString().trim();
@@ -103,7 +104,6 @@ public class Merchant_Registration extends AppCompatActivity {
                 String s_working_hours = working_hours.getText().toString().trim();
                 String s_message = merMessage.getText().toString().trim();
                 String s_address = address.getText().toString().trim();
-
 
                 if(s_ownername.isEmpty()){
                     businessOwner.setError("This fields is required");
@@ -163,7 +163,15 @@ public class Merchant_Registration extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if(task.isSuccessful())
                                                         {
+                                                            Map<String,Object> data1 = new HashMap<>();
+                                                            data.put("booking_count",0);
+
                                                             Toast.makeText(Merchant_Registration.this, "Merchant registered successfully", Toast.LENGTH_SHORT).show();
+
+                                                            firestore.collection("MERCHANT").document(user_email)
+                                                                    .collection("BOOKINGS").document("ANALYTICS")
+                                                                    .set(data);
+
                                                             startActivity(new Intent(Merchant_Registration.this,BottomNavigationMerchant.class));
                                                             Merchant_Registration.this.finish();
                                                         }
@@ -179,6 +187,10 @@ public class Merchant_Registration extends AppCompatActivity {
                                                         Toast.makeText(Merchant_Registration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
+
+
+
+
                                     }
                                     else
                                     {
