@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class FragmentAddDetails extends AppCompatActivity {
 
-
     Spinner spinner;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
@@ -43,6 +42,7 @@ public class FragmentAddDetails extends AppCompatActivity {
         tv_working_hours = findViewById(R.id.tv_working_hours);
         tv_contact = findViewById(R.id.tv_contact);
         tv_service_name_and_price = findViewById(R.id.service_name_and_price);
+        spinner = findViewById(R.id.choosetimeslot);
 
         Bundle bundle = getIntent().getExtras();
         String s_address = bundle.getString("ADDRESS") ;
