@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.okhttp.internal.DiskLruCache;
@@ -29,6 +30,8 @@ public class ListAvailableMerchants extends AppCompatActivity {
     TextView tv;
     FirebaseFirestore firestore;
     ArrayList<String> fetched_list = new ArrayList<>();
+    String s_phone;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
         setContentView(R.layout.activity_list_available_merchants);
 
         firestore = FirebaseFirestore.getInstance();
+        auth =FirebaseAuth.getInstance();
 
         listview = findViewById(R.id.list_view_list_merchants);
         tv=findViewById(R.id.textView19);
@@ -45,6 +49,31 @@ public class ListAvailableMerchants extends AppCompatActivity {
         s_service = bundle.getString("SUB");
 
         tv.setText("Select a merchant for "+s_category+" - "+s_service);
+
+
+        firestore.collection("USERS").document(auth.getCurrentUser().getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful())
+                        {
+                            DocumentSnapshot snapshot = task.getResult();
+                            s_phone = snapshot.getString("mobilenumber");
+                            Toast.makeText(ListAvailableMerchants.this, s_phone, Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(ListAvailableMerchants.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ListAvailableMerchants.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         firestore.collection("SERVICES").document(s_category)
                 .collection(s_category).document(s_service)
@@ -89,7 +118,8 @@ public class ListAvailableMerchants extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String separated[] = fetched_list.get(i).split(" ");
-
+//                firestore.collection("MERCHANT").document(separated[0])
+//                        .collection("BOOKINGS").document()
                 Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();
             }
         });
