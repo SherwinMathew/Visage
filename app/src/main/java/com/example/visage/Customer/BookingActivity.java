@@ -1,19 +1,17 @@
-package com.example.visage;
+package com.example.visage.Customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.visage.Customer.Booking;
-import com.example.visage.Customer.ListAvailableMerchants;
+import com.example.visage.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -22,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class FragmentAddDetails extends AppCompatActivity {
+public class BookingActivity extends AppCompatActivity {
 
     Spinner spinner;
     ArrayList<String> arrayList = new ArrayList<>();
@@ -34,7 +32,7 @@ public class FragmentAddDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment_add_details);
+        setContentView(R.layout.activity_booking);
 
         book = findViewById(R.id.btn_book);
         tv_business_name = findViewById(R.id.tv_businessname);
@@ -77,14 +75,14 @@ public class FragmentAddDetails extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(FragmentAddDetails.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BookingActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(FragmentAddDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BookingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -106,18 +104,18 @@ public class FragmentAddDetails extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful())
                                 {
-                                    Toast.makeText(FragmentAddDetails.this, "Booking has been made successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(BookingActivity.this, "Booking has been made successfully", Toast.LENGTH_SHORT).show();
                                 }
                                 else
                                 {
-                                    Toast.makeText(FragmentAddDetails.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(BookingActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(FragmentAddDetails.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(BookingActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
 

@@ -12,16 +12,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.visage.FragmentAddDetails;
 import com.example.visage.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.okhttp.internal.DiskLruCache;
 
 import java.util.ArrayList;
 
@@ -62,7 +59,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                             DocumentSnapshot snapshot = task.getResult();
                             s_phone = snapshot.getString("mobilenumber");
                             s_address = snapshot.getString("address");
-                            Toast.makeText(ListAvailableMerchants.this, s_phone, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListAvailableMerchants.this, s_address, Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
@@ -122,7 +119,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                 s_merchant_email = separated[0];
                 s_price = separated[1];
 
-                Intent i2 = new Intent(ListAvailableMerchants.this, FragmentAddDetails.class);
+                Intent i2 = new Intent(ListAvailableMerchants.this, BookingActivity.class);
                 i2.putExtra("MERCHANT EMAIL",s_merchant_email);
                 i2.putExtra("ADDRESS",s_address);
                 i2.putExtra("CONTACT",s_phone);

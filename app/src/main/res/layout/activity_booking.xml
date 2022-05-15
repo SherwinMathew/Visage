@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentAddDetails">
+    tools:context=".Customer.BookingActivity">
 
     <TextView
         android:id="@+id/tv_businessname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="TextView"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +21,8 @@
 
     <ImageView
         android:id="@+id/businessimage"
-        android:layout_width="226dp"
-        android:layout_height="220dp"
+        android:layout_width="151dp"
+        android:layout_height="135dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_businessname"
         app:layout_constraintHorizontal_bias="0.502"
@@ -44,7 +46,7 @@
         android:id="@+id/tv_working_hours"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="5dp"
         android:text="Working hours :"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_address"
@@ -56,7 +58,7 @@
         android:id="@+id/tv_contact"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="Contact :"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_working_hours"
@@ -68,7 +70,7 @@
         android:id="@+id/service_name_and_price"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="5dp"
         android:text="Service Name and Price :"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_contact"
@@ -80,7 +82,7 @@
         android:id="@+id/btn_book"
         android:layout_width="339dp"
         android:layout_height="49dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:text="Book Now"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/choosetimeslot"
@@ -92,9 +94,9 @@
         android:id="@+id/choosetimeslot"
         android:layout_width="339dp"
         android:layout_height="43dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="132dp"
         app:layout_constraintEnd_toEndOf="@+id/service_name_and_price"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/service_name_and_price"
         app:layout_constraintTop_toBottomOf="@+id/service_name_and_price" />
 
