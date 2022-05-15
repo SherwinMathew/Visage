@@ -89,6 +89,7 @@ public class FragmentAddDetails extends AppCompatActivity {
                 });
 
         tv_contact.setText(s_phone);
+        s_price = s_price.replace("@","");
         tv_service_name_and_price.setText(s_service+" @ Rs."+s_price);
 
         book.setOnClickListener(new View.OnClickListener() {
