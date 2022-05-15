@@ -164,7 +164,7 @@ public class FragmentAddService extends Fragment {
                                                         details = new ArrayList<>();
                                                         DocumentSnapshot doc_obj = task.getResult();
                                                         FData obj2 = doc_obj.toObject(FData.class);
-                                                        details.add(user_email+"@"+s_rate);
+                                                        details.add(user_email+" @"+s_rate);
                                                        // Toast.makeText(getContext(), "task successful", Toast.LENGTH_SHORT).show();
 
                                                         if(doc_obj.contains("available_merchants"))
