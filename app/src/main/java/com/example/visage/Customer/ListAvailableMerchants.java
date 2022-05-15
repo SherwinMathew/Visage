@@ -59,7 +59,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                             DocumentSnapshot snapshot = task.getResult();
                             s_phone = snapshot.getString("mobilenumber");
                             s_address = snapshot.getString("address");
-                            Toast.makeText(ListAvailableMerchants.this, s_address, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListAvailableMerchants.this,s_address, Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
