@@ -163,13 +163,14 @@ public class FragmentAddService extends Fragment {
                                                         ArrayList<String>details;
                                                         details = new ArrayList<>();
                                                         DocumentSnapshot doc_obj = task.getResult();
-                                                        FData obj2 = doc_obj.toObject(FData.class);
-                                                        details.add(user_email+" @"+s_rate);
+
                                                        // Toast.makeText(getContext(), "task successful", Toast.LENGTH_SHORT).show();
 
                                                         if(doc_obj.contains("available_merchants"))
                                                         {
+                                                            FData obj2 = doc_obj.toObject(FData.class);
                                                             details = obj2.getAvailable_merchants();
+                                                            details.add(user_email+" @"+s_rate);
                                                             Map<String,Object> data = new HashMap<>();
                                                             data.put("available_merchants",details);
                                                             firestore.collection("SERVICES").document(s_category)
