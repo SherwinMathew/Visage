@@ -96,6 +96,12 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(spinner.getSelectedItem().toString().equals("Choose favourable time slot"))
+                {
+                    Toast.makeText(BookingActivity.this, "Pick a valid time slot and proceed", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Booking obj = new Booking(s_address,s_phone,s_service,spinner.getSelectedItem().toString());
 
                 firestore.collection("MERCHANT").document(s_merchant_email)
@@ -115,16 +121,37 @@ public class BookingActivity extends AppCompatActivity {
                                                     if(task.isSuccessful())
                                                     {
                                                         DocumentSnapshot snapshot = task.getResult();
-
-                                                        int val = Integer.parseInt(snapshot.getString("booking_count"));
+                                                        long val = snapshot.getLong("booking_count");
                                                         val = val+1;
+
+                                                        //Toast.makeText(BookingActivity.this,String.valueOf(val), Toast.LENGTH_SHORT).show();
 
                                                         Map<String,Object> data = new HashMap<>();
                                                         data.put("booking_count",val);
 
                                                         firestore.collection("MERCHANT").document(s_merchant_email)
                                                                 .collection("BOOKINGS").document("ANALYTICS")
-                                                                .set(data);
+                                                                .set(data)
+                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        if(task.isSuccessful())
+                                                                        {
+                                                                            Toast.makeText(BookingActivity.this, "Booking has been made successfully", Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Toast.makeText(BookingActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    }
+                                                                })
+                                                                .addOnFailureListener(new OnFailureListener() {
+                                                                    @Override
+                                                                    public void onFailure(@NonNull Exception e) {
+                                                                        Toast.makeText(BookingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                });
+
 
                                                     }
                                                     else
@@ -140,7 +167,6 @@ public class BookingActivity extends AppCompatActivity {
                                                 }
                                             });
 
-                                    Toast.makeText(BookingActivity.this, "Booking has been made successfully", Toast.LENGTH_SHORT).show();
                                 }
                                 else
                                 {
