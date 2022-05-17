@@ -53,7 +53,7 @@ public class FragmentViewBookings extends Fragment {
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View v = LayoutInflater.from(getContext()).inflate(R.layout.custom_layout_view_request,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_layout_view_request,parent,false);
                 return new MyViewHolder(v);
             }
 
@@ -62,9 +62,9 @@ public class FragmentViewBookings extends Fragment {
 
                 holder.tv_phone.setText(model.getContact_number());
                 holder.tv_address.setText(model.getAddress());
-                holder.tv_time.setText(model.getAddress());
-                holder.tv_name.setText(model.getService_name());
-
+                holder.tv_time.setText(model.getConvenient_time());
+                holder.tv_service_name.setText(model.getService_name());
+                holder.tv_name.setText(model.getName());
 
             }
         };
@@ -77,6 +77,7 @@ public class FragmentViewBookings extends Fragment {
         return v;
     }
 }
+
 class MyViewHolder extends RecyclerView.ViewHolder
 {
 
@@ -90,7 +91,7 @@ class MyViewHolder extends RecyclerView.ViewHolder
         tv_phone = itemView.findViewById(R.id.custom_tv_phone);
         tv_address = itemView.findViewById(R.id.custom_tv_address);
         tv_service_name = itemView.findViewById(R.id.tv_custom_service_name);
-        tv_name = itemView.findViewById(R.id.custom_tv_time);
+        tv_time = itemView.findViewById(R.id.custom_tv_time);
         tv_name = itemView.findViewById(R.id.custom_tv_name);
         tv_date = itemView.findViewById(R.id.custom_tv_date);
         cardView = itemView.findViewById(R.id.custom_card);

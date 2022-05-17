@@ -24,6 +24,7 @@ public class MerchantDashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_merchant_dashboard, container, false);
+
         add_service = view.findViewById(R.id.dashboard_add_service);
         view_bookings = view.findViewById(R.id.dashboard_view_bookings);
 
