@@ -50,6 +50,7 @@ public class BookingActivity extends AppCompatActivity {
         String s_service = bundle.getString("SERVICE NAME");
         String s_price = bundle.getString("PRICE");
         String s_merchant_email = bundle.getString("MERCHANT EMAIL");
+        String s_name = bundle.getString("NAME");
 
         firestore = FirebaseFirestore.getInstance();
 
@@ -102,7 +103,7 @@ public class BookingActivity extends AppCompatActivity {
                     return;
                 }
 
-                Booking obj = new Booking(s_address,s_phone,s_service,spinner.getSelectedItem().toString());
+                Booking obj = new Booking(s_address,s_phone,s_service,spinner.getSelectedItem().toString(),s_name);
 
                 firestore.collection("MERCHANT").document(s_merchant_email)
                         .collection("BOOKINGS").document(s_phone)

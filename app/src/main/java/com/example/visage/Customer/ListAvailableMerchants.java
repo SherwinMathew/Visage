@@ -29,7 +29,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
     TextView tv;
     FirebaseFirestore firestore;
     ArrayList<String> fetched_list = new ArrayList<>();
-    String s_phone,s_address,s_price,s_merchant_email;
+    String s_phone,s_address,s_price,s_merchant_email,s_name;
     FirebaseAuth auth;
 
     @Override
@@ -59,6 +59,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                             DocumentSnapshot snapshot = task.getResult();
                             s_phone = snapshot.getString("mobilenumber");
                             s_address = snapshot.getString("address");
+                            s_name = snapshot.getString("name");
                             //Toast.makeText(ListAvailableMerchants.this,s_address, Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -121,6 +122,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
 
                 Intent i2 = new Intent(ListAvailableMerchants.this, BookingActivity.class);
                 i2.putExtra("MERCHANT EMAIL",s_merchant_email);
+                i2.putExtra("NAME",s_name);
                 i2.putExtra("ADDRESS",s_address);
                 i2.putExtra("CONTACT",s_phone);
                 i2.putExtra("SERVICE NAME",s_service);

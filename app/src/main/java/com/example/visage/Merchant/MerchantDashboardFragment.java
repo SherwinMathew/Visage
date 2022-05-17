@@ -17,7 +17,7 @@ import com.example.visage.R;
 
 public class MerchantDashboardFragment extends Fragment {
 
-    CardView add_service;
+    CardView add_service,view_bookings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +25,7 @@ public class MerchantDashboardFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_merchant_dashboard, container, false);
         add_service = view.findViewById(R.id.dashboard_add_service);
+        view_bookings = view.findViewById(R.id.dashboard_view_bookings);
 
         add_service.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +35,16 @@ public class MerchantDashboardFragment extends Fragment {
                 ft.replace(R.id.frame_layout2, new FragmentAddService(), "");
                 ft.commit();
 
+            }
+        });
+
+        view_bookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.frame_layout2, new FragmentViewBookings(), "");
+                ft.commit();
             }
         });
 
