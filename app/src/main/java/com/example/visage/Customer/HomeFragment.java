@@ -68,12 +68,12 @@ public class HomeFragment extends Fragment {
 
         List<ServiceCategory> data = new ArrayList<>();
 
-        ServiceCategory serviceCategory = new ServiceCategory("Body care",R.drawable.ic_baseline_miscellaneous_services_24);
-        ServiceCategory serviceCategory2 = new ServiceCategory("Facial",R.drawable.ic_baseline_miscellaneous_services_24);
-        ServiceCategory serviceCategory3 = new ServiceCategory("Hair Care",R.drawable.ic_baseline_miscellaneous_services_24);
-        ServiceCategory serviceCategory4 = new ServiceCategory("Hair Colour",R.drawable.ic_baseline_miscellaneous_services_24);
-        ServiceCategory serviceCategory5 = new ServiceCategory("Hair Cut",R.drawable.ic_baseline_miscellaneous_services_24);
-        ServiceCategory serviceCategory6 = new ServiceCategory("Makeover",R.drawable.ic_baseline_miscellaneous_services_24);
+        ServiceCategory serviceCategory = new ServiceCategory("Body care",R.drawable.body_care);
+        ServiceCategory serviceCategory2 = new ServiceCategory("Facial",R.drawable.facial);
+        ServiceCategory serviceCategory3 = new ServiceCategory("Hair Care",R.drawable.haircare);
+        ServiceCategory serviceCategory4 = new ServiceCategory("Hair Colour",R.drawable.haircolor);
+        ServiceCategory serviceCategory5 = new ServiceCategory("Hair Cut",R.drawable.hair_cut);
+        ServiceCategory serviceCategory6 = new ServiceCategory("Makeover",R.drawable.makeover);
 
         data.add(serviceCategory);
         data.add(serviceCategory2);
