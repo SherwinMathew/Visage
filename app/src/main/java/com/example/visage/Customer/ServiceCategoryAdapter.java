@@ -57,13 +57,13 @@ public class ServiceCategoryAdapter extends RecyclerView.Adapter<ServiceCategory
             holder.cardView.setOutlineAmbientShadowColor(context.getColor(R.color.colorPrimary));
             holder.cardView.setStrokeWidth(2);
             holder.title.setTextColor(context.getColor(R.color.colorPrimary));
-            holder.image.setColorFilter(ContextCompat.getColor((Context) context,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+            //holder.image.setColorFilter(ContextCompat.getColor((Context) context,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         }else {
             // Make card inactive
             holder.cardView.setOutlineSpotShadowColor(context.getColor(R.color.colorSecondary));
             holder.cardView.setOutlineAmbientShadowColor(context.getColor(R.color.colorSecondary));
             holder.title.setTextColor(context.getColor(R.color.colorSecondary));
-            holder.image.setColorFilter(ContextCompat.getColor((Context) context,R.color.colorSecondary), PorterDuff.Mode.SRC_IN);
+            //holder.image.setColorFilter(ContextCompat.getColor((Context) context,R.color.colorSecondary), PorterDuff.Mode.SRC_IN);
             holder.cardView.setStrokeWidth(0);
         }
 

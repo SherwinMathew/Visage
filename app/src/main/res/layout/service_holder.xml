@@ -15,7 +15,6 @@
     <LinearLayout
         android:id="@+id/ll_background"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:layout_height="match_parent">
 
@@ -25,8 +24,7 @@
             android:layout_width="140dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/hair_cutting" />
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:id="@+id/food_title"
