@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        firestore.collection("USERS").document(auth.getCurrentUser().getEmail())
+        firestore.collection("USERS").document(auth.getCurrentUser().getEmail())//retrieving profile data
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -113,7 +113,7 @@ public class AccountFragment extends Fragment {
         });
 
 
-        switchAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        switchAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {         //to switch to business account
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked())

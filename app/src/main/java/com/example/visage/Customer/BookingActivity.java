@@ -65,7 +65,7 @@ public class BookingActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
 
 
-        firestore.collection("MERCHANT").document(s_merchant_email)
+        firestore.collection("MERCHANT").document(s_merchant_email) //fetching merchant details from database
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -115,7 +115,7 @@ public class BookingActivity extends AppCompatActivity {
                                 if(task.isSuccessful())
                                 {
                                     firestore.collection("MERCHANT").document(s_merchant_email)
-                                            .collection("BOOKINGS").document("ANALYTICS")
+                                            .collection("BOOKINGS").document("ANALYTICS")//fetching analytics
                                             .get()
                                             .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                 @Override

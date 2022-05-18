@@ -24,8 +24,8 @@ public class BottomNavigationCustomer extends AppCompatActivity {
         //Add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_cart));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_profile));
+    //    bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
 
 
         Fragment home = new com.example.visage.Customer.HomeFragment();
@@ -46,9 +46,6 @@ public class BottomNavigationCustomer extends AppCompatActivity {
                         fragment = new com.example.visage.Customer.CalendarFragment();
                         break;
                     case 3:
-                        fragment = new com.example.visage.Customer.CartFragment();
-                        break;
-                    case 4:
                         fragment = new AccountFragment();
                         break;
 

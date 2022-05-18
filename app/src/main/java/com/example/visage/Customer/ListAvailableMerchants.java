@@ -75,7 +75,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                     }
                 });
 
-        firestore.collection("SERVICES").document(s_category)
+        firestore.collection("SERVICES").document(s_category) //list the service provider, who provides particular services
                 .collection(s_category).document(s_service)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -130,10 +130,11 @@ public class ListAvailableMerchants extends AppCompatActivity {
                 i2.putExtra("PRICE",s_price);
                 startActivity(i2);
 
-
                // Toast.makeText(ListAvailableMerchants.this,separated[0], Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 }
+
+
