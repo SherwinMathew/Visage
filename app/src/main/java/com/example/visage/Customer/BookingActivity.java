@@ -51,6 +51,7 @@ public class BookingActivity extends AppCompatActivity {
         String s_price = bundle.getString("PRICE");
         String s_merchant_email = bundle.getString("MERCHANT EMAIL");
         String s_name = bundle.getString("NAME");
+        String s_customer_email = bundle.getString("CUSTOMER EMAIL");
 
         firestore = FirebaseFirestore.getInstance();
 
@@ -103,7 +104,7 @@ public class BookingActivity extends AppCompatActivity {
                     return;
                 }
 
-                Booking obj = new Booking(s_address,s_phone,s_service,spinner.getSelectedItem().toString(),s_name);
+                Booking obj = new Booking(s_address,s_phone,s_service,spinner.getSelectedItem().toString(),s_name,s_customer_email);
 
                 firestore.collection("MERCHANT").document(s_merchant_email)
                         .collection("BOOKINGS").document(s_phone)
@@ -123,12 +124,14 @@ public class BookingActivity extends AppCompatActivity {
                                                     {
                                                         DocumentSnapshot snapshot = task.getResult();
                                                         long val = snapshot.getLong("booking_count");
+                                                        long val2 = snapshot.getLong("accepted_count");
                                                         val = val+1;
 
                                                         //Toast.makeText(BookingActivity.this,String.valueOf(val), Toast.LENGTH_SHORT).show();
 
                                                         Map<String,Object> data = new HashMap<>();
                                                         data.put("booking_count",val);
+                                                        data.put("accepted_count",val2);
                                                         data.put("name","analytics");
 
                                                         firestore.collection("MERCHANT").document(s_merchant_email)

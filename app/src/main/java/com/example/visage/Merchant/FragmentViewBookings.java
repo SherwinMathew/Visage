@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.visage.Customer.Booking;
+import com.example.visage.Customer.BookingActivity;
 import com.example.visage.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -23,8 +24,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FragmentViewBookings extends Fragment {
@@ -33,6 +38,7 @@ public class FragmentViewBookings extends Fragment {
     FirebaseFirestore firestore;
     FirestoreRecyclerAdapter adapter;
     FirebaseAuth auth;
+    String customer_email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,11 +70,13 @@ public class FragmentViewBookings extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Booking model) {
 
+
                     holder.tv_phone.setText(model.getContact_number());
                     holder.tv_address.setText(model.getAddress());
                     holder.tv_time.setText(model.getConvenient_time());
                     holder.tv_service_name.setText(model.getService_name());
                     holder.tv_name.setText(model.getName());
+                    holder.tv_customer_email.setText(model.getEmail());
 
                     holder.decline.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -82,7 +90,33 @@ public class FragmentViewBookings extends Fragment {
                                        public void onComplete(@NonNull Task<Void> task) {
                                            if(task.isSuccessful())
                                            {
-                                               Toast.makeText(getContext(),"Booking request declined successfully", Toast.LENGTH_SHORT).show();
+                                               Map<Object,String>status = new HashMap<>();
+                                               status.put("booking_response","declined");
+
+                                               firestore.collection("USERS").document(holder.tv_customer_email.getText().toString())
+                                                       .collection("BOOKING RESPONSE").document(auth.getCurrentUser().getEmail())
+                                                       .set(status)
+                                                       .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                           @Override
+                                                           public void onComplete(@NonNull Task<Void> task) {
+                                                               if(task.isSuccessful())
+                                                               {
+
+                                                                   Toast.makeText(getContext(),"Booking declined successfully !", Toast.LENGTH_SHORT).show();
+                                                               }
+                                                               else
+                                                               {
+                                                                   Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                               }
+                                                           }
+                                                       })
+                                                       .addOnFailureListener(new OnFailureListener() {
+                                                           @Override
+                                                           public void onFailure(@NonNull Exception e) {
+                                                               Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                           }
+                                                       });
+                                             //  Toast.makeText(getContext(),"Booking request declined successfully", Toast.LENGTH_SHORT).show();
                                            }
                                            else
                                            {
@@ -96,6 +130,97 @@ public class FragmentViewBookings extends Fragment {
                                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                                        }
                                    });
+                        }
+                    });
+
+                    holder.accept.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Map<Object,String>status = new HashMap<>();
+                            status.put("booking_response","accepted");
+
+                            firestore.collection("USERS").document(holder.tv_customer_email.getText().toString())
+                                    .collection("BOOKING RESPONSE").document(auth.getCurrentUser().getEmail())
+                                    .set(status)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful())
+                                            {
+
+                                                firestore.collection("MERCHANT").document(auth.getCurrentUser().getEmail())
+                                                        .collection("BOOKINGS").document("ANALYTICS")
+                                                        .get()
+                                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                if(task.isSuccessful())
+                                                                {
+                                                                    DocumentSnapshot snapshot = task.getResult();
+                                                                    long val = snapshot.getLong("booking_count");
+                                                                    long val2 = snapshot.getLong("accepted_count");
+                                                                    val = val+1;
+                                                                    val2 = val2+1;
+                                                                    //Toast.makeText(BookingActivity.this,String.valueOf(val), Toast.LENGTH_SHORT).show();
+
+                                                                    Map<String,Object> data = new HashMap<>();
+                                                                    data.put("booking_count",val);
+                                                                    data.put("accepted_count",val2);
+                                                                    data.put("name","analytics");
+
+                                                                    firestore.collection("MERCHANT").document(auth.getCurrentUser().getEmail())
+                                                                            .collection("BOOKINGS").document("ANALYTICS")
+                                                                            .set(data)
+                                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                                    if(task.isSuccessful())
+                                                                                    {
+                                                                                        Toast.makeText(getContext(), "Booking has been accepted successfully", Toast.LENGTH_SHORT).show();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                                    }
+                                                                                }
+                                                                            })
+                                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                                @Override
+                                                                                public void onFailure(@NonNull Exception e) {
+                                                                                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            });
+                                                                }
+                                                                else
+                                                                {
+                                                                    Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+
+
+
+
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                         }
                     });
 
@@ -116,7 +241,7 @@ class MyViewHolder extends RecyclerView.ViewHolder
 {
 
     CardView cardView;
-    TextView tv_phone,tv_name,tv_service_name,tv_address,tv_time,tv_date;
+    TextView tv_phone,tv_name,tv_service_name,tv_address,tv_time,tv_date,tv_customer_email;
     Button accept,decline;
 
     public MyViewHolder(@NonNull View itemView) {
@@ -132,6 +257,7 @@ class MyViewHolder extends RecyclerView.ViewHolder
         cardView = itemView.findViewById(R.id.custom_card);
         accept = itemView.findViewById(R.id.btn_accept);
         decline = itemView.findViewById(R.id.btn_decline);
+        tv_customer_email = itemView.findViewById(R.id.custom_tv_customer_email);
 
 
     }

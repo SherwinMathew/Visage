@@ -49,7 +49,7 @@ public class BottomNavigationMerchant extends AppCompatActivity {
                         fragment = new com.example.visage.Merchant.MerchantAnalyticsFragment();
                         break;
                     case 4:
-                        Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
+                        fragment = new AccountFragment();
                         break;
                 }
 

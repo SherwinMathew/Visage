@@ -2,17 +2,18 @@ package com.example.visage.Customer;
 
 public class Booking {
 
-    String address,contact_number,service_name,convenient_time,name;
+    String address,contact_number,service_name,convenient_time,name,email;
 
     public Booking() {
     }
 
-    public Booking(String address, String contact_number, String service_name, String convenient_time, String name) {
+    public Booking(String address, String contact_number, String service_name, String convenient_time, String name, String email) {
         this.address = address;
         this.contact_number = contact_number;
         this.service_name = service_name;
         this.convenient_time = convenient_time;
         this.name = name;
+        this.email = email;
     }
 
     public String getAddress() {
@@ -53,5 +54,13 @@ public class Booking {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

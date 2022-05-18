@@ -121,6 +121,7 @@ public class ListAvailableMerchants extends AppCompatActivity {
                 s_price = separated[1];
 
                 Intent i2 = new Intent(ListAvailableMerchants.this, BookingActivity.class);
+                i2.putExtra("CUSTOMER EMAIL",auth.getCurrentUser().getEmail());
                 i2.putExtra("MERCHANT EMAIL",s_merchant_email);
                 i2.putExtra("NAME",s_name);
                 i2.putExtra("ADDRESS",s_address);

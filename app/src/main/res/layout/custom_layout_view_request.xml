@@ -68,6 +68,13 @@
                 android:layout_marginLeft="5dp"
                 android:text="date" />
 
+            <TextView
+                android:id="@+id/custom_tv_customer_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="customer_email" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
