@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Visage">
         <activity
+            android:name=".ViewMyServices"
+            android:exported="false" />
+        <activity
+            android:name=".BookingStatus"
+            android:exported="false" />
+        <activity
             android:name=".Customer.BookingActivity"
             android:exported="false" />
         <activity

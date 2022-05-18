@@ -129,6 +129,7 @@ public class BookingActivity extends AppCompatActivity {
 
                                                         Map<String,Object> data = new HashMap<>();
                                                         data.put("booking_count",val);
+                                                        data.put("name","analytics");
 
                                                         firestore.collection("MERCHANT").document(s_merchant_email)
                                                                 .collection("BOOKINGS").document("ANALYTICS")

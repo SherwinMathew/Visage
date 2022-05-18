@@ -165,6 +165,7 @@ public class Merchant_Registration extends AppCompatActivity {
                                                         {
                                                             Map<String,Object> data1 = new HashMap<>();
                                                             data1.put("booking_count",0);
+                                                            data1.put("name","analytics");
 
                                                             Toast.makeText(Merchant_Registration.this, "Merchant registered successfully", Toast.LENGTH_SHORT).show();
 

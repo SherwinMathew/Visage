@@ -85,14 +85,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Inplayout.Round"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginBottom="16dp"
-                android:hint="Pincode" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/addser_btn"
                 android:layout_width="match_parent"

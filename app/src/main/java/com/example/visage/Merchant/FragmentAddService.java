@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class FragmentAddService extends Fragment {
 
     TextInputEditText serviceRate,serviceInfo;
@@ -120,7 +119,6 @@ public class FragmentAddService extends Fragment {
                     service_name.setAdapter(name_adapter);
                 }
 
-
             }
 
             @Override
@@ -142,7 +140,7 @@ public class FragmentAddService extends Fragment {
                 String user_email = auth.getCurrentUser().getEmail();
                // String user_email = "brimstone@gmail.com";
 
-                Services obj = new Services(s_rate,s_info);
+                Services obj = new Services(s_rate,s_info,s_name);
 
                 firestore.collection("MERCHANT").document(user_email)
                         .collection(s_category).document(s_name)

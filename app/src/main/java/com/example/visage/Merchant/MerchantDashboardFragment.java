@@ -1,5 +1,6 @@
 package com.example.visage.Merchant;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -17,7 +18,7 @@ import com.example.visage.R;
 
 public class MerchantDashboardFragment extends Fragment {
 
-    CardView add_service,view_bookings;
+    CardView add_service,view_bookings,view_my_service;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,6 +28,7 @@ public class MerchantDashboardFragment extends Fragment {
 
         add_service = view.findViewById(R.id.dashboard_add_service);
         view_bookings = view.findViewById(R.id.dashboard_view_bookings);
+        view_my_service = view.findViewById(R.id.dashboard_view_my_services);
 
         add_service.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,15 @@ public class MerchantDashboardFragment extends Fragment {
 
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.frame_layout2, new FragmentViewBookings(), "");
+                ft.commit();
+            }
+        });
+
+        view_my_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.frame_layout2, new FragmentViewMyServices(), "");
                 ft.commit();
             }
         });

@@ -35,10 +35,13 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
         lgEmail = findViewById(R.id.et_log_email);
         lgPass = findViewById(R.id.et_log_pass);
         sign_up_here = findViewById(R.id.new_sign_up);
         continue_btn = findViewById(R.id.login_continue);
+
+        continue_btn.setVisibility(View.VISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -86,6 +89,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                         startActivity(new Intent(Login_Activity.this, com.example.visage.Customer.BottomNavigationCustomer.class));
                     }else {
                         Toast.makeText(Login_Activity.this, "Login Error", Toast.LENGTH_SHORT).show();
+                        continue_btn.setVisibility(View.VISIBLE);
                     }
                 }
             });
