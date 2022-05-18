@@ -133,15 +133,3 @@ public class HomeFragment extends Fragment {
 
 }
 
-//class MyViewHolder extends RecyclerView.ViewHolder
-//{
-//
-//    TextView title;
-//
-//    public MyViewHolder(@NonNull View itemView) {
-//        super(itemView);
-//
-//        title = itemView.findViewById(R.id.txt_title);
-//
-//    }
-//}

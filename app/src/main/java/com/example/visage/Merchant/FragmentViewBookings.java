@@ -78,7 +78,18 @@ public class FragmentViewBookings extends Fragment {
                     holder.tv_name.setText(model.getName());
                     holder.tv_customer_email.setText(model.getEmail());
 
-                    holder.decline.setOnClickListener(new View.OnClickListener() {
+                    if(holder.tv_name.getText().equals("analytics"))
+                    {
+                        holder.tv_name.setText("View your incoming requests above");
+                        holder.tv_date.setText("");
+                        holder.decline.setVisibility(View.INVISIBLE);
+                        holder.accept.setVisibility(View.INVISIBLE);
+                    }
+
+
+
+
+                holder.decline.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 

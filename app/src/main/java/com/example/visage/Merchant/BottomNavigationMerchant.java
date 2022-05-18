@@ -24,9 +24,9 @@ public class BottomNavigationMerchant extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.bottom_navigation2);
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_baseline_analytics_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.ic_profile));
+        //bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_calendar));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_analytics_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_profile));
 
         Fragment home = new com.example.visage.Merchant.MerchantDashboardFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -44,11 +44,9 @@ public class BottomNavigationMerchant extends AppCompatActivity {
                         fragment = new com.example.visage.Merchant.MerchantDashboardFragment();
                         break;
                     case 2:
-                        break;
-                    case 3:
                         fragment = new com.example.visage.Merchant.MerchantAnalyticsFragment();
                         break;
-                    case 4:
+                    case 3:
                         fragment = new MerchantProfileFragment();
                         break;
                 }
