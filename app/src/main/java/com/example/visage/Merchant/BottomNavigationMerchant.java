@@ -49,7 +49,7 @@ public class BottomNavigationMerchant extends AppCompatActivity {
                         fragment = new com.example.visage.Merchant.MerchantAnalyticsFragment();
                         break;
                     case 4:
-                        fragment = new AccountFragment();
+                        fragment = new MerchantProfileFragment();
                         break;
                 }
 

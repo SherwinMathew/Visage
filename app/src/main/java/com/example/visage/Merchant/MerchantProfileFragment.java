@@ -111,8 +111,7 @@ public class MerchantProfileFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()) {
-                    Toast.makeText(getContext(), String.valueOf(compoundButton.isChecked()), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), com.example.visage.Customer.Login_Activity.class));
+                    startActivity(new Intent(getActivity(), BottomNavigationCustomer.class));
                 }
             }
         });
