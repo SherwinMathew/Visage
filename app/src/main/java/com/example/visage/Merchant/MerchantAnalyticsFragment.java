@@ -43,10 +43,10 @@ public class MerchantAnalyticsFragment extends Fragment {
         tv_cancelled = view.findViewById(R.id.cancel_book);
         pieChart = view.findViewById(R.id.piechart);
 
-        tv_active.setText(Integer.toString(20));
+        //tv_active.setText(Integer.toString(20));
         tv_cancelled.setText(Integer.toString(50));
 
-        active = Integer.parseInt(tv_active.getText().toString());
+       //active = Integer.parseInt(tv_active.getText().toString());
         cancelled = Integer.parseInt(tv_cancelled.getText().toString());
 
         firestore = FirebaseFirestore.getInstance();
@@ -62,11 +62,15 @@ public class MerchantAnalyticsFragment extends Fragment {
                         {
                             DocumentSnapshot snapshot = task.getResult();
                             Long val = snapshot.getLong("booking_count");
+                            Long val2 = snapshot.getLong("accepted_count");
                             //Toast.makeText(getContext(),val.toString(), Toast.LENGTH_SHORT).show();
 
                             tv_total.setText(val.toString());
+                            tv_active.setText(val2.toString());
                             total = val.intValue();
+                            active = val2.intValue();
                             pieChart.addPieSlice(new PieModel("1",total, Color.parseColor("#FFA726")));
+                            pieChart.addPieSlice(new PieModel("2",active, Color.parseColor("#66BB6A")));
 
                         }
                         else
@@ -82,9 +86,7 @@ public class MerchantAnalyticsFragment extends Fragment {
                     }
                 });
 
-
-        pieChart.addPieSlice(new PieModel("2",active, Color.parseColor("#66BB6A")));
-        pieChart.addPieSlice(new PieModel("3",cancelled, Color.parseColor("#EF5350")));
+       // pieChart.addPieSlice(new PieModel("3",cancelled, Color.parseColor("#EF5350")));
 
         pieChart.startAnimation();
 

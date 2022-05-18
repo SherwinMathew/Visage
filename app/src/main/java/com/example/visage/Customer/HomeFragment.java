@@ -60,38 +60,6 @@ public class HomeFragment extends Fragment {
 
         setCategories();
 
-//        String user_email = auth.getCurrentUser().getEmail();
-//
-//        Query query =  firestore.collection("MERCHANT").document(user_email)
-//                .collection("SERVICES");
-//
-//        FirestoreRecyclerOptions<Services>options= new FirestoreRecyclerOptions.Builder<Services>()
-//                .setQuery(query,Services.class)
-//                .build();
-//
-//        adapter = new FirestoreRecyclerAdapter<Services,MyViewHolder>(options) {
-//
-//            @NonNull
-//            @Override
-//            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//
-//                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_holder,parent,false);
-//                return new MyViewHolder(v);
-//            }
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Services model) {
-//
-//                holder.title.setText("content to be changed");
-//
-//            }
-//        };
-//
-//        adapter.startListening();
-//        recyclerItems.setHasFixedSize(true);
-//        recyclerItems.setLayoutManager(new LinearLayoutManager(getContext(),recyclerItems.HORIZONTAL,false));
-//        recyclerItems.setAdapter(adapter);
-
         return view;
 
     }

@@ -38,7 +38,6 @@ public class MerchantProfileFragment extends Fragment {
     FirebaseFirestore firestore;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +83,6 @@ public class MerchantProfileFragment extends Fragment {
                                 tv_phone.setText(mobile);
                                 progressBar.setVisibility(View.GONE);
                             }
-
                         }
                         else
                         {
